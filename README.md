@@ -11,9 +11,9 @@
  Realizing we were mesing up becasue we received a differrent type of data from teacher 
 ### 07/05/2023
  Delete all the code and start again
-### 10/06/2023
+### 10/05/2023
  Try to fecth the name of the large group 
-### 11/06/2023
+### 11/05/2023
 Working with reducers add,delete and select 
 ### 17/05/2023
 Konzultation with teacher in order to make everything clear 
