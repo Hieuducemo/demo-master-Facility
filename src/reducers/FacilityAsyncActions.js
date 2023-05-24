@@ -15,6 +15,7 @@ export const FacilityFetchHelper = (id, query, resultselector, dispatch, getStat
         console.log(JSON.stringify(p))
         return p
     }
+
     const p = query(id)
         .then(
             response => response.json(),

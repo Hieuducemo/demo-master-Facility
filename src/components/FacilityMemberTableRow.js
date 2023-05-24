@@ -5,7 +5,7 @@ import { DeleteButton } from 'components/DeleteButton';
 
 import { FacilityMemberRemoveButton } from './FacilityMemberRemoveButton';
 /**
- * One member as a table row
+ * One facility as a table row
  * @param {*} param0 
  * @returns 
  */
