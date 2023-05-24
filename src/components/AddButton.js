@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 /**
- * This is Delete Button with confirmation (two state button).
+ * This is Add Button with confirmation (two state button).
  * @param {*} children
  * @param {() => void} onClick
  * @returns 
