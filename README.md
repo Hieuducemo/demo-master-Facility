@@ -11,19 +11,20 @@
  Realizing we were mesing up becasue we received a differrent type of data from teacher 
 ### 07/05/2023
  Delete all the code and start again
-### 10/06/2023
+### 10/05/2023
  Try to fecth the name of the large group 
-### 11/06/2023
+### 11/05/2023
 Working with reducers add,delete and select 
 ### 17/05/2023
 Konzultation with teacher in order to make everything clear 
 ### 20/05/2023
 Duc will work with store and Quan will work with the sever 
 ### 23/05/2023
-Get ready for the store and we are stil working on with the sever 
+Get ready for the store and we are still working on with the sever 
 <img width="909" alt="image" src="https://github.com/Hieuducemo/demo-master-Facility/assets/115462421/317ebb8b-5faa-44c0-9ef0-0c1125d2d93e">
 
 ### 24/05/2023
 Project Day 2 
+Acceptable result*
 
 
