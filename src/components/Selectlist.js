@@ -22,6 +22,8 @@ export const SelectInput = ({ id, value, onChange, placeholder }) => {
       <option value="76421cf8-a7a0-11ed-b76e-0242ac110002" data-name="budova">budova</option>
       <option value="76421e10-a7a0-11ed-b76e-0242ac110002" data-name="patro">patro</option>
       <option value="76421faa-a7a0-11ed-b76e-0242ac110002" data-name="učebna">učebna</option>
+      <option value="76421ee2-a7a0-11ed-b76e-0242ac110002" data-name="skupina místností">skupina místností</option> 
+      <option value="7642209a-a7a0-11ed-b76e-0242ac110002" data-name="laboratoř">laboratoř</option>
     </select>
   )
 }
