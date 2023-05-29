@@ -41,33 +41,13 @@ const FacilityMemberRemove = (state, action) => {
  * @param {*} action 
  * @returns 
  */
-/*const FacilityMemberUpdate = (state, action) => {
-    const g = action.payload.facility
-    const u = action.payload.subFacilities
-    const facility = state[g.id]
-    facility.subFacilities = facility.subFacilities.map(subFacilities =>
-      subFacilities.id === u.id ? { ...subFacilities, ...u } : subFacilities)
-    return state
-  }
-*/
-/*const FacilityMemberUpdate = (state, action) => {
-    const g = action.payload.facility
-    const u = action.payload.subFacilities
-    const facility = state[g.id]
-
-    facility.subFacilities = facility.subFacilities.map(subFacility =>
-      subFacility.id === u.id ? { ...subFacility, name: u.name } : subFacility
-    )
-  
-    return state
-  }*/
   const FacilityMemberUpdate = (state, action) => {
     const g = action.payload.facility
     const u = action.payload.subFacility
     console.log("ff",u)
     const facility = state[g.id]
       facility.subFacilities = facility.subFacilities.map(subFacility =>
-        subFacility.id === u.id ? { ...subFacility, name: u.name } : subFacility
+        subFacility.id === u.id ? { ...subFacility, name: u.name} : subFacility
       )
     return state
   }

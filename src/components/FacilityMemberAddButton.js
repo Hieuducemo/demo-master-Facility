@@ -29,8 +29,8 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
 
   return (
     <div>
-      <input type="text" name="name" placeholder="Name" value={newMember.name} onChange={handleChange} />
-      <AddButton onClick={handleAddMember}>Add Member</AddButton>
+      <input type="text" name="name" placeholder="Enter name" value={newMember.name} onChange={handleChange} />
+      <AddButton onClick={handleAddMember}>Add Subfacility</AddButton>
     </div>
   );
 };

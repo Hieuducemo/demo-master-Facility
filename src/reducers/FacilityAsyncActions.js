@@ -75,17 +75,19 @@ export const FacilityFakeFetch = (id) => (dispatch, getState) => {
     return bodyfunc()
 }
 
-
 export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
     const FacilityMutationJSON = (facility) => {
         return {
             query: `mutation ($id: ID!, $name: String!, $lastchange: DateTime!) {
-                facilityUpdate(facility: {id: $id, name: $name, lastchange: $lastchange}) {
+                facilityUpdate
+                (facility: 
+                    {id: $id, name: $name, lastchange: $lastchange}) {
                   id
                   msg
                   facility {
                     id
                     lastchange
+                   
                   }
                 }
               }`,
@@ -122,4 +124,7 @@ export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
                 return json
             }
         )   
+}
+export const FacilityAsyncInsert = (facility)=>(dispatch,getState)=>{
+
 }
