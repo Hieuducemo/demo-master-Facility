@@ -26,5 +26,7 @@ Get ready for the store and we are still working on with the sever
 ### 24/05/2023
 Project Day 2 
 Acceptable result*
+### 28/05/2023
+Trying to fetch the type to sever(still not work)
 
 
