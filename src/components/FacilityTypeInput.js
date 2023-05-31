@@ -16,7 +16,7 @@ export const FacilityTypeInput=({facility,actions})=>{
 
         /*actions.FacilityAsyncUpdate({updatedFacility})
             .then(json=>console.log("FacilityTypeInput", json.data.facilityUpdate.msg))*/
-        actions.FacilityAsyncUpdate(updatedFacility).then((json) => {
+        actions.FacilityAsyncTypeUpdate(updatedFacility).then((json) => {
                 console.log(json); 
                 console.log("FacilityTypeInput", json.data.facilityUpdate.msg);
               });

@@ -1,5 +1,5 @@
 import { FacilityActions } from "./Facilityreducers"
-import { FacilityFetch, FacilityFakeFetch, FacilityAsyncUpdate } from "./FacilityAsyncActions"
+import { FacilityFetch, FacilityAsyncUpdate,FacilityAsyncTypeUpdate } from "./FacilityAsyncActions"
 
 
 /**
@@ -12,6 +12,7 @@ export const bindFacilityActions = (dispatch) => {
     return {
         onFacilityUpdate: (g) => dispatch(FacilityActions.Facility_update(g)),
         onFacilityAdd: (g) => dispatch(FacilityActions.Facility_add(g)),
+        onFacilityDelete:(g)=>dispatch(FacilityActions.Facility_delete(g)),
     
         onFacilityMemberRemove: ({subFacility, facility}) => dispatch(FacilityActions.Facility_memberRemove({subFacility, facility})),
         onFacilityMemberUpdate: (payload) => dispatch(FacilityActions.Facility_memberUpdate(payload)),
@@ -20,8 +21,9 @@ export const bindFacilityActions = (dispatch) => {
 
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         
-        FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    
+       /* FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    */
        
-        FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility))
+        FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility)),
+        FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))
     }
 }
