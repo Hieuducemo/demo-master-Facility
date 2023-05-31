@@ -10,6 +10,7 @@ import { FacilityTypeInput } from "./FacilityTypeInput"
  */
 
 export const FacilityLarge = ({facility, actions}) => {
+    console.log("asdasudhi",facility)
     return (
         <Card>
             <Card.Header>

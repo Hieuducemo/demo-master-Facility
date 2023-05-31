@@ -1,5 +1,5 @@
 import { FacilityActions } from "./Facilityreducers"
-import { FacilityFetch, FacilityAsyncUpdate,FacilityAsyncTypeUpdate } from "./FacilityAsyncActions"
+import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate} from "./FacilityAsyncActions"
 
 
 /**
@@ -17,13 +17,13 @@ export const bindFacilityActions = (dispatch) => {
         onFacilityMemberRemove: ({subFacility, facility}) => dispatch(FacilityActions.Facility_memberRemove({subFacility, facility})),
         onFacilityMemberUpdate: (payload) => dispatch(FacilityActions.Facility_memberUpdate(payload)),
         onFacilityMemberAdd: ({FacilityId,member}) => dispatch(FacilityActions.Facility_memberAdd({FacilityId,member})),
-        onFacilityTypeUpdate: ({facility,newType}) =>dispatch(FacilityActions.Facility_TypeUpdate({facility, newType})),
+        onFacilityTypeUpdate: (payload) =>dispatch(FacilityActions.Facility_TypeUpdate(payload)),
 
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         
        /* FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    */
-       
         FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility)),
-        FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))
+        FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}
+       /* FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))*/
     }
 }

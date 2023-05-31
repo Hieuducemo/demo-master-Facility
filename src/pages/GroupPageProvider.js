@@ -22,14 +22,15 @@ export const FacilityPageProvider = ({id}) => {
     //vyber skupiny ze store, ktera ma byt zobrazena
     const facility = facilities[id] //|| {id: id}
     console.log(facilities)
-
+    console.log('jujj',facility)  
     //console.log(Facility)
     
     
     useEffect(
         () => {
             console.log('FacilityPageProvider refetch ' + id)
-            actions.FacilityFetch(id)           
+            actions.FacilityFetch(id)
+                     
         }, [id, selectedId]
     )
 

@@ -50,7 +50,7 @@ export const FacilityFetchHelper = (id, query, resultselector, dispatch, getStat
 export const FacilityFetch = (id) => (dispatch, getState) => {
     const FacilitySelector = (json) => json.data.facilityById
     const bodyfunc = async () => {
-        let facilityData = await FacilityFetchHelper(id, FacilityQuerySmall, FacilitySelector, dispatch, getState)
+        let facilityData = await FacilityFetchHelper(id, FacilityQueryLarge, FacilitySelector, dispatch, getState)
         
         if (facilityData.type !== "764217ee-a7a0-11ed-b76e-0242ac110002") {
             facilityData = await FacilityFetchHelper(id, FacilityQueryLarge, FacilitySelector, dispatch, getState)
@@ -113,6 +113,56 @@ export const TypeFetchHelper=(query, selector, dispatch,getState)=>{
     return bodyfunc()
 }*/
 
+export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId}) => (dispatch, getState) => {
+    const FacilityMutationJSON = (facility) => {
+        return {
+            query: `mutation ($id: ID!, $lastchange: DateTime!, $facilitytypeId: ID!) {
+                facilityUpdate
+                (facility: 
+                    {id: $id, lastchange: $lastchange, facilitytypeId: $facilitytypeId}) {
+                  id                
+                  msg
+                  facility {
+                    id
+                    lastchange                   
+                  }
+                }
+              }`,
+            variables: facility
+            }
+        }
+
+    const params = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        redirect: 'follow', // manual, *follow, error
+        body: JSON.stringify(FacilityMutationJSON({id,lastchange,facilitytypeId}))
+    }
+
+
+    return fetch('/api/gql', params)
+    //return authorizedFetch('/api/gql', params)
+        .then(
+            resp => resp.json()
+        )
+        .then(
+            json => {
+                const msg = json.data.facilityUpdate.msg
+                if (msg === "fail") {
+                    console.log("Update selhalo")
+                } else {
+                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
+                    const lastchange = json.data.facilityUpdate.facility.lastchange
+                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
+                }
+                return json
+            }
+        )   
+}
+
 export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
     const FacilityMutationJSON = (facility) => {
         return {
@@ -142,54 +192,6 @@ export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
         body: JSON.stringify(FacilityMutationJSON(facility))
     }
 
-
-    return fetch('/api/gql', params)
-    //return authorizedFetch('/api/gql', params)
-        .then(
-            resp => resp.json()
-        )
-        .then(
-            json => {
-                const msg = json.data.facilityUpdate.msg
-                if (msg === "fail") {
-                    console.log("Update selhalo")
-                } else {
-                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
-                    const lastchange = json.data.facilityUpdate.facility.lastchange
-                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
-                }
-                return json
-            }
-        )   
-}
-
-export const FacilityAsyncTypeUpdate = (facility) => (dispatch, getState) => {
-    const FacilityMutationJSON = (facility) => {
-        return {
-            query: `mutation ($lastchange: DateTime!, $facilitytypeId: ID!) {
-                facilityUpdate
-                (facility: 
-                    { lastchange: $lastchange,facilitytypeId: $facilitytypeId}) {
-                    msg
-                  facility {                   
-                    facilitytypeId
-                    lastchange                  
-                  }
-                }
-              }`,
-            variables: facility
-            }
-        }
-
-    const params = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        redirect: 'follow', // manual, *follow, error
-        body: JSON.stringify(FacilityMutationJSON(facility))
-    }
 
     return fetch('/api/gql', params)
     //return authorizedFetch('/api/gql', params)

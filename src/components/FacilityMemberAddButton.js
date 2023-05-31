@@ -6,6 +6,21 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
   const [newMember, setNewMember] = useState({
     id: '',
     name: '',
+    lastchange:'', 
+    geometry:'', 
+    geolocation:'', 
+    type:{
+      id:'', 
+      name:''
+    }, 
+    masterFacility:{
+      id:'',
+      name:''
+    }, 
+    subFacilities:{
+      id:'',
+      name:''
+    }
   })
 
   const handleAddMember = () => {

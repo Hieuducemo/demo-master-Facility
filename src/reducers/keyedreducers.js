@@ -26,7 +26,6 @@ export const CreateItem = (state, action) => {
 export const DeleteItem = (state, action) => {
     const item = action.payload;
     delete state[item.id]
-
     return state
 }
 
