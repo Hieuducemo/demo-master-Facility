@@ -17,7 +17,7 @@ export const bindFacilityActions = (dispatch) => {
         onFacilityMemberRemove: ({subFacility, facility}) => dispatch(FacilityActions.Facility_memberRemove({subFacility, facility})),
         onFacilityMemberUpdate: (payload) => dispatch(FacilityActions.Facility_memberUpdate(payload)),
         onFacilityMemberAdd: ({FacilityId,member}) => dispatch(FacilityActions.Facility_memberAdd({FacilityId,member})),
-        onFacilityTypeUpdate: (payload) =>dispatch(FacilityActions.Facility_TypeUpdate(payload)),
+        onFacilityTypeUpdate: ({facility,newType}) =>dispatch(FacilityActions.Facility_TypeUpdate({facility,newType})),
 
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         

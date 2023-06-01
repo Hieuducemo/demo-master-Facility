@@ -113,7 +113,7 @@ export const TypeFetchHelper=(query, selector, dispatch,getState)=>{
     return bodyfunc()
 }*/
 
-export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId}) => (dispatch, getState) => {
+export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId,facility}) => (dispatch, getState) => {
     const FacilityMutationJSON = (facility) => {
         return {
             query: `mutation ($id: ID!, $lastchange: DateTime!, $facilitytypeId: ID!) {
@@ -156,7 +156,7 @@ export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId}) => (disp
                 } else {
                     //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
                     const lastchange = json.data.facilityUpdate.facility.lastchange
-                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
+                    dispatch(FacilityActions.Facility_update({...facility,lastchange: lastchange}))
                 }
                 return json
             }

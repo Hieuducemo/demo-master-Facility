@@ -2,17 +2,20 @@ import { SelectInput } from "./Selectlist";
 
 export const FacilityTypeInput=({facility,actions})=>{
     const modify_facility = facility
-    console.log(modify_facility)
     const onchange = (value) => {
-        console.log("changed", value)     
-        console.log("hhh",value)  
+        console.log("hh",value)
+        console.log("changed", value)
+        const newType={
+            id:value.type.id,
+            name:value.type.name
+        }
         const payload = {
             lastchange: modify_facility.lastchange,
             facilitytypeId: value.type.id,
             id: modify_facility.id
         }
-        actions.FacilityTypeAsyncUpdate(payload)
-            
+        actions.FacilityTypeAsyncUpdate(payload)         
+        actions.onFacilityTypeUpdate({facility,newType})
     }
     return <SelectInput id={facility.id}
                         value={facility.type.id} 
