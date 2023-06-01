@@ -1,5 +1,5 @@
 import { FacilityActions } from "./Facilityreducers"
-import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate} from "./FacilityAsyncActions"
+import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate,FacilityGeoAsyncUpdate} from "./FacilityAsyncActions"
 
 
 /**
@@ -23,7 +23,8 @@ export const bindFacilityActions = (dispatch) => {
         
        /* FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    */
         FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility)),
-        FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}
+        FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}, 
+        FacilityGeoAsyncUpdate:(facility)=>dispatch(FacilityGeoAsyncUpdate(facility))
        /* FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))*/
     }
 }
