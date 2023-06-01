@@ -213,13 +213,63 @@ export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
         )   
 }
 
-export const FacilityGeoAsyncUpdate = (facility) => (dispatch, getState) => {
+export const FacilityGeoMAsyncUpdate = (facility) => (dispatch, getState) => {
     const FacilityMutationJSON = (facility) => {
         return {
             query: `mutation ($id: ID!, $geometry: String!, $lastchange: DateTime!) {
                 facilityUpdate
                 (facility: 
                     {id: $id, geometry: $geometry, lastchange: $lastchange}) {
+                  id
+                  msg
+                  facility {
+                    id
+                    lastchange                  
+                  }
+                }
+              }`,
+            variables: facility
+            }
+        }
+
+    const params = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        redirect: 'follow', // manual, *follow, error
+        body: JSON.stringify(FacilityMutationJSON(facility))
+    }
+
+
+    return fetch('/api/gql', params)
+    //return authorizedFetch('/api/gql', params)
+        .then(
+            resp => resp.json()
+        )
+        .then(
+            json => {
+                const msg = json.data.facilityUpdate.msg
+                if (msg === "fail") {
+                    console.log("Update selhalo")
+                } else {
+                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
+                    const lastchange = json.data.facilityUpdate.facility.lastchange
+                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
+                }
+                return json
+            }
+        )   
+}
+
+export const FacilityGeoLAsyncUpdate = (facility) => (dispatch, getState) => {
+    const FacilityMutationJSON = (facility) => {
+        return {
+            query: `mutation ($id: ID!, $geolocation: String!, $lastchange: DateTime!) {
+                facilityUpdate
+                (facility: 
+                    {id: $id, geolocation: $geolocation, lastchange: $lastchange}) {
                   id
                   msg
                   facility {

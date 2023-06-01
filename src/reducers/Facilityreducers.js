@@ -62,7 +62,6 @@ const FacilityMemberRemove = (state, action) => {
  const FacilityTypeUpdate = (state, action) => {
   console.log("volani funkce typeupdate")
   const g = action.payload.facility  
-  
   const Type = action.payload.newType
   const facility = state[g.id]
   console.log("type",Type)

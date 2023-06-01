@@ -24,8 +24,8 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             console.log("dddss",subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, geometry: value}}         
             actions.onFacilityMemberUpdate(payload)       
-            actions.FacilityGeoAsyncUpdate({...subFacility, geometry: value})
-            .then(json=>console.log("FacilityGeoInput", json.data.facilityUpdate.msg))    
+            actions.FacilityGeoMAsyncUpdate({...subFacility, geometry: value})
+            .then(json=>console.log("FacilityGeoMInput", json.data.facilityUpdate.msg))    
         }
     }
     const onChangeGeolocation = (value) => {
@@ -33,7 +33,8 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, geolocation: value}}         
             actions.onFacilityMemberUpdate(payload)
-            
+            actions.FacilityGeoLAsyncUpdate({...subFacility, geolocation: value})
+            .then(json=>console.log("FacilityGeoLInput", json.data.facilityUpdate.msg)) 
         }
     }
     return (
