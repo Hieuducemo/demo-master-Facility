@@ -14,6 +14,8 @@ export const FacilityQueryLargeJSON = (id) => ({
                 lastchange
                 geometry
                 geolocation
+                label
+                valid
                 type {
                     id
                     name
@@ -25,6 +27,13 @@ export const FacilityQueryLargeJSON = (id) => ({
                 subFacilities {
                     id
                     name
+                    lastchange
+                    geometry
+                    geolocation
+                    type{
+                        id 
+                        name
+                    }
                 }
             }
         }`,

@@ -47,7 +47,7 @@ const FacilityMemberRemove = (state, action) => {
     console.log("ff",u)
     const facility = state[g.id]
       facility.subFacilities = facility.subFacilities.map(subFacility =>
-        subFacility.id === u.id ? { ...subFacility, name: u.name} : subFacility
+        subFacility.id === u.id ? { ...subFacility, name: u.name, geometry:u.geometry,geolocation:u.geolocation} : subFacility
       )
     return state
   }

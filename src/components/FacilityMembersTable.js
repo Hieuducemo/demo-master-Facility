@@ -13,6 +13,8 @@ export const FacilityMembersTable = ({facility, actions}) => {
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Geometry</th>
+                    <th>Geolocation</th>
                     <th>Nástroje</th>
                 </tr>
             </thead>

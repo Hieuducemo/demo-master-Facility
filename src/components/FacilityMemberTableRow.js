@@ -15,6 +15,23 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, name: value}}         
             actions.onFacilityMemberUpdate(payload)
+            
+        }
+    }
+    const onChangeGeometry = (value) => {
+        if (actions.onFacilityMemberUpdate) {
+            console.log(subFacility, value)
+            const payload = {facility: {id: gid}, subFacility: {...subFacility, geometry: value}}         
+            actions.onFacilityMemberUpdate(payload)
+            
+        }
+    }
+    const onChangeGeolocation = (value) => {
+        if (actions.onFacilityMemberUpdate) {
+            console.log(subFacility, value)
+            const payload = {facility: {id: gid}, subFacility: {...subFacility, geolocation: value}}         
+            actions.onFacilityMemberUpdate(payload)
+            
         }
     }
     return (
@@ -22,6 +39,12 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             <td>{index} {subFacility.id}</td>
             <td>
                 <TextInput placeholder={"name"} id={subFacility.id} value={subFacility.name} onChange={onChangeName}/>
+            </td>
+            <td>
+                <TextInput placeholder={"geometry"} id={subFacility.id} value={subFacility.geometry} onChange={onChangeGeometry}/> 
+            </td>
+            <td>
+            <TextInput placeholder={"geolocation"} id={subFacility.id} value={subFacility.geolocation} onChange={onChangeGeolocation}/> 
             </td>
             <td>
                 <FacilityMemberRemoveButton facility={{id: gid}} subFacility={subFacility} actions={actions} />
