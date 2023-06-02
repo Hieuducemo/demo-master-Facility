@@ -28,5 +28,6 @@ Project Day 2
 Acceptable result*
 ### 28/05/2023
 Trying to fetch the type to sever(still not work)
-
+### 31/05/2023
+Succesfully fetch facility type 
 
