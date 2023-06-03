@@ -30,4 +30,6 @@ Acceptable result*
 Trying to fetch the type to sever(still not work)
 ### 31/05/2023
 Succesfully fetch facility type 
+# 3/06/2023
+Succesfully fetch add function 
 
