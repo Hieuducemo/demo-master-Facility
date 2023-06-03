@@ -292,7 +292,6 @@ export const FacilityGeoLAsyncUpdate = (facility) => (dispatch, getState) => {
         body: JSON.stringify(FacilityMutationJSON(facility))
     }
 
-
     return fetch('/api/gql', params)
     //return authorizedFetch('/api/gql', params)
         .then(
@@ -311,4 +310,38 @@ export const FacilityGeoLAsyncUpdate = (facility) => (dispatch, getState) => {
                 return json
             }
         )   
+}
+
+export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
+    const FacilityMutationJSON =(member)=>{
+        return{
+            query: `mutation ($name:String!,
+                  $facilitytypeId:ID!,
+                  $id:ID!,
+                  $masterFacilityId:ID!
+                  ){
+                    facilityInsert(facility:{
+                        name:$name,
+                        facilitytypeId:$facilitytypeId, 
+                        id:$id, 
+                        masterFacilityId:$masterFacilityId                     
+                    })
+                    {
+                        msg
+                    }
+                  }
+            `, 
+            variables: member
+        }
+    }
+    const params = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        redirect: 'follow', // manual, *follow, error
+        body: JSON.stringify(FacilityMutationJSON(member))
+    }
+    return fetch('/api/gql', params)
 }
