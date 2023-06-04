@@ -4,7 +4,6 @@ import {AddButton} from './AddButton'
 
 
 export const FacilityMemberAddButton = ({ facility, actions }) => {
-
   const [newMember, setNewMember] = useState({
     id: '',
     name: '',

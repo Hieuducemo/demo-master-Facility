@@ -3,12 +3,11 @@ import { SelectInput } from "./Selectlist";
 export const FacilityTypeInput=({facility,actions})=>{
     const modify_facility = facility
     const onchange = (value) => {
-        console.log("hh",value)
-        console.log("changed", value)
         const newType={
             id:value.type.id,
             name:value.type.name
         }
+        console.log("lastchange", facility.lastchange)
         const payload = {
             lastchange: modify_facility.lastchange,
             facilitytypeId: value.type.id,

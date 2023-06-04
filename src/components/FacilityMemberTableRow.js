@@ -8,7 +8,6 @@ import { FacilityMemberRemoveButton } from './FacilityMemberRemoveButton';
  * @returns 
  */
 export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
-    console.log("dd",subFacility)
 
     const onChangeName = (value) => {
         if (actions.onFacilityMemberUpdate) {

@@ -14,7 +14,6 @@ export const FacilityQueryLargeJSON = (id) => ({
                 lastchange
                 geometry
                 geolocation
-                label
                 valid
                 type {
                     id

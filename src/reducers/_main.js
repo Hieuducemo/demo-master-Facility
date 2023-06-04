@@ -1,6 +1,7 @@
 import { FacilityActions } from "./Facilityreducers"
 import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate,FacilityGeoMAsyncUpdate,FacilityGeoLAsyncUpdate} from "./FacilityAsyncActions"
 import {FacilityAsyncInsert} from "./FacilityAsyncActions"
+import { FacilityAsyncDelete } from "./FacilityAsyncActions"
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -26,7 +27,8 @@ export const bindFacilityActions = (dispatch) => {
         FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}, 
         FacilityGeoMAsyncUpdate:(facility)=>dispatch(FacilityGeoMAsyncUpdate(facility)), 
         FacilityGeoLAsyncUpdate:(facility)=>dispatch(FacilityGeoLAsyncUpdate(facility)), 
-        FacilityAsyncInsert:(facility)=>dispatch(FacilityAsyncInsert(facility))
+        FacilityAsyncInsert:(facility)=>dispatch(FacilityAsyncInsert(facility)), 
+        FacilityAsyncDelete:(facility)=>dispatch(FacilityAsyncDelete(facility))
         
        /* FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))*/
     }
