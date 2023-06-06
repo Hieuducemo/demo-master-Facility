@@ -69,12 +69,16 @@ export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId,facility})
                   msg
                   facility {
                     id
-                    lastchange                   
+                    lastchange
+                    type{
+                        id
+                    }  
                   }
                 }
               }`,
-            variables: facility
-            }
+            variables:facility 
+                      
+        }
         }
 
     const params = {
@@ -86,7 +90,6 @@ export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId,facility})
         redirect: 'follow', // manual, *follow, error
         body: JSON.stringify(FacilityMutationJSON({id,lastchange,facilitytypeId}))
     }
-
 
     return fetch('/api/gql', params)
     //return authorizedFetch('/api/gql', params)
@@ -100,7 +103,7 @@ export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId,facility})
                     console.log("Update selhalo")
                 } else {
                     //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
-                    const lastchange = json.data.facilityUpdate.facility.lastchange
+                    const lastchange = json.data?.facilityUpdate?.facility.lastchange
                     dispatch(FacilityActions.Facility_update({...facility,lastchange: lastchange}))
                 }
                 return json
@@ -110,6 +113,7 @@ export const FacilityTypeAsyncUpdate = ({id,lastchange,facilitytypeId,facility})
 
 export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
     const FacilityMutationJSON = (facility) => {
+        console.log("lll",facility.id,facility.name)
         return {
             query: `mutation ($id: ID!, $name: String!, $lastchange: DateTime!) {
                 facilityUpdate
@@ -126,7 +130,6 @@ export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
             variables: facility
             }
         }
-
     const params = {
         method: 'POST',
         headers: {
@@ -151,7 +154,8 @@ export const FacilityAsyncUpdate = (facility) => (dispatch, getState) => {
                 } else {
                     //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
                     const lastchange = json.data.facilityUpdate.facility.lastchange
-                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
+                    const updatedFacility =json.data.facilityUpdate.facility
+                    dispatch(FacilityActions.Facility_update({...facility, ...updatedFacility}))
                 }
                 return json
             }
@@ -169,6 +173,7 @@ export const FacilityGeoMAsyncUpdate = (facility) => (dispatch, getState) => {
                   msg
                   facility {
                     id
+                    name 
                     lastchange                  
                   }
                 }

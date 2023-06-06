@@ -22,7 +22,6 @@ export const FacilityPageProvider = ({id}) => {
     //vyber skupiny ze store, ktera ma byt zobrazena
     const facility = facilities[id] //|| {id: id}
     console.log(facilities)
-    console.log('jujj',facility)  
     //console.log(Facility)
     
     
@@ -35,6 +34,7 @@ export const FacilityPageProvider = ({id}) => {
     )
 
     if (facility) {
+
         //skupina je ve store
         return (          
             <FacilityLarge facility={facility} actions={actions}/>       

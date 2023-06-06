@@ -20,12 +20,14 @@ export const bindFacilityActions = (dispatch) => {
         onFacilityMemberAdd: ({FacilityId,member}) => dispatch(FacilityActions.Facility_memberAdd({FacilityId,member})),
         onFacilityTypeUpdate: ({facility,newType}) =>dispatch(FacilityActions.Facility_TypeUpdate({facility,newType})),
 
+        FacilityMemberNameAsycnUpdate: (facility) => dispatch(FacilityMemberNameAsyncUpdate(facility)),
+
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         
        /* FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    */
         FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility)),
         FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}, 
-        FacilityGeoMAsyncUpdate:(facility)=>dispatch(FacilityGeoMAsyncUpdate(facility)), 
+        FacilityGeoMAsyncUpdate:(subFacility)=>dispatch(FacilityGeoMAsyncUpdate(subFacility)), 
         FacilityGeoLAsyncUpdate:(facility)=>dispatch(FacilityGeoLAsyncUpdate(facility)), 
         FacilityAsyncInsert:(facility)=>dispatch(FacilityAsyncInsert(facility)), 
         FacilityAsyncDelete:(facility)=>dispatch(FacilityAsyncDelete(facility))

@@ -50,6 +50,7 @@ const FacilityMemberRemove = (state, action) => {
         subFacility.id === u.id ? { ...subFacility, name: u.name, geometry:u.geometry,geolocation:u.geolocation} : subFacility
       )
     return state
+    
   }
   
  /**
@@ -60,7 +61,7 @@ const FacilityMemberRemove = (state, action) => {
  */
 
  const FacilityTypeUpdate = (state, action) => {
-  console.log("volani funkce typeupdate")
+  console.log("volani funkce type update")
   const g = action.payload.facility  
   const Type = action.payload.newType
   const facility = state[g.id]
@@ -69,8 +70,6 @@ const FacilityMemberRemove = (state, action) => {
   return state
 }
 
-
- 
   
 
   

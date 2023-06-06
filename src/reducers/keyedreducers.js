@@ -49,10 +49,12 @@ export const ReplaceItem = (state, action) => {
  * @returns 
  */
 export const UpdateItem = (state, action) => {
+    console.log("vola funckci update")
     const newItem = action.payload;
     const oldItem = state[newItem.id]
     state[newItem.id] = {...oldItem, ...newItem}
-    
+    console.log("newItem",newItem.id)
+    console.log("updateItem",oldItem,newItem)
     return state
 }    
 

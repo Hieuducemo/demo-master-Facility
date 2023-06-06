@@ -4,13 +4,13 @@ import { FacilityNameInput } from "./FacilityNameInput";
 import { FacilityTypeInput } from "./FacilityTypeInput"
 
 /**
- * Renders a card describing a Facility im detailed form.
+ * Renders a card describing a Facility in detailed form.
  * @param {*} param0 
  * @returns 
  */
 
 export const FacilityLarge = ({facility, actions}) => {
-    console.log("asdasudhi",facility)
+    console.log("lastchange",facility.name)
     return (
         <Card>
             <Card.Header>
