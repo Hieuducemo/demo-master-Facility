@@ -36,6 +36,7 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             .then(json=>console.log("FacilityGeoLInput", json.data.facilityUpdate.msg)) 
         }
     }
+    if(subFacility.valid){
     return (
         <tr>
             <td>{index} {subFacility.id}</td>
@@ -43,14 +44,15 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
                 <TextInput placeholder={"name"} id={subFacility.id} value={subFacility.name} onChange={onChangeName}/>
             </td>
             <td>
-                <TextInput placeholder={"geometry"} id={subFacility.id} value={subFacility.geometry} onChange={onChangeGeometry}/> 
+                <TextInput placeholder={"0"} id={subFacility.id} value={subFacility.geometry} onChange={onChangeGeometry}/> 
             </td>
             <td>
-            <TextInput placeholder={"geolocation"} id={subFacility.id} value={subFacility.geolocation} onChange={onChangeGeolocation}/> 
+            <TextInput placeholder={"0"} id={subFacility.id} value={subFacility.geolocation} onChange={onChangeGeolocation}/> 
             </td>
             <td>
                 <FacilityMemberRemoveButton facility={{id: gid}} subFacility={subFacility} actions={actions} />
             </td>
         </tr>
     )
+    }
 }

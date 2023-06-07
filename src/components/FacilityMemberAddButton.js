@@ -34,9 +34,9 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
       id: v1(),
       name: newMember.name,
       facilitytypeId:"76421cf8-a7a0-11ed-b76e-0242ac110002", 
-      masterFacilityId:facility.id
+      masterFacilityId:facility.id,
+      valid:true
     }
-    console.log("heo",FacilityId)
     actions.onFacilityMemberAdd({FacilityId, member})
     actions.FacilityAsyncInsert(member)
   }

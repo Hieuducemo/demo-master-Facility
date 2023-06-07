@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 
 import { FacilityTypeInput } from "./FacilityTypeInput"
 import { FacilityNameInput } from "./FacilityNameInput"
-
+import { FacilityGeometryInput } from "./FacilityGeometryInput";
+import {FacilityGeolocationInput} from "./FacilityGeolocationInput"
 export const FacilityAttributesEditable = ({facility, actions}) => {
     return (
         <Card>
@@ -12,22 +13,35 @@ export const FacilityAttributesEditable = ({facility, actions}) => {
                         Facility {facility.name} ({facility.id})
             </Card.Header>
             <Card.Body>
-                <Row>
-                    <Col md={2}><b>Název</b></Col>
-                    <Col md={10}>
-                        <FacilityNameInput facility={facility} actions={actions} />
-                    </Col>
-                <Row>
-                </Row>
-                    <Col md={2}><b>Typ</b></Col>
-                    <Col md={10}>
-                        <FacilityTypeInput facility={facility} actions={actions} />
-                    </Col>
-                </Row>
-                
-            </Card.Body>
+    <Row>
+        <Col md={2}><b>Název</b></Col>
+        <Col md={10}>
+            <FacilityNameInput facility={facility} actions={actions} />
+        </Col>
+    </Row>
+
+    <Row>
+        <Col md={2}><b>Typ</b></Col>
+        <Col md={10}>
+            <FacilityTypeInput facility={facility} actions={actions} />
+        </Col>
+    </Row>
+
+    <Row>
+        <Col md={2}><b>Geometry</b></Col>
+        <Col md={10}>
+            <FacilityGeometryInput facility={facility} actions={actions} />
+        </Col>
+    </Row>
+    <Row>
+        <Col md={2}><b>Geometry</b></Col>
+        <Col md={10}>
+            <FacilityGeolocationInput facility={facility} actions={actions} />
+        </Col>
+    </Row>
+</Card.Body>
+
             <Card.Body>
-                {JSON.stringify(facility)}
             </Card.Body>
         </Card>
 

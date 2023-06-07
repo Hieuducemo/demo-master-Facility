@@ -2,6 +2,7 @@ import { FacilityActions } from "./Facilityreducers"
 import { FacilityQueryLarge } from "queries/FacilityQueryLarge"
 import { fakeQueryFacility }  from 'queries/fakequeryFacility'
 import { authorizedFetch } from "queries/authorizedFetch"
+import { lazy } from "react"
 /**
  * Ask for the item on server and adds it or update it in the store to the heap
  * @param {*} id 
@@ -274,7 +275,7 @@ export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
                         name:$name,
                         facilitytypeId:$facilitytypeId, 
                         id:$id, 
-                        masterFacilityId:$masterFacilityId                     
+                        masterFacilityId:$masterFacilityId                   
                     })
                     {
                         msg
@@ -301,7 +302,7 @@ export const FacilityAsyncDelete = (facility)=>(dispatch,getState)=>{
         return{
             query: `mutation (
                   $id:ID!,
-                  $valid:String!,
+                  $valid:Boolean!,
                   $lastchange:DateTime!
                   ){
                     facilityUpdate(facility:{
@@ -310,7 +311,7 @@ export const FacilityAsyncDelete = (facility)=>(dispatch,getState)=>{
                         lastchange:$lastchange                 
                     })
                     {
-                        id
+                        id                     
                         msg
                     }
                   }

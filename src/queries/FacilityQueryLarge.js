@@ -26,6 +26,7 @@ export const FacilityQueryLargeJSON = (id) => ({
                 subFacilities {
                     id
                     name
+                    valid
                     lastchange
                     geometry
                     geolocation
