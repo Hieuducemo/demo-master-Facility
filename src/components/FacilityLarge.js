@@ -2,6 +2,10 @@ import Card from "react-bootstrap/Card";
 import { FacilityMembersCard } from './FacilityMembersCard';
 import { FacilityNameInput } from "./FacilityNameInput";
 import { FacilityTypeInput } from "./FacilityTypeInput"
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap/esm";
+import { FacilityAttributesEditable } from "./FacilityAttributesEditable";
+
 
 /**
  * Renders a card describing a Facility in detailed form.
@@ -14,15 +18,21 @@ export const FacilityLarge = ({facility, actions}) => {
     return (
         <Card>
             <Card.Header>
-                <Card.Title>
-                    Skupina {facility.id} <br />
-                    {facility.name} <br />
-                    <FacilityNameInput facility={facility} actions={actions} /> <br />
-                    <FacilityTypeInput facility={facility} actions={actions} />
-                </Card.Title>
+                <Row>
+                    <Col>
+                        Facility {facility.name} ({facility.id})
+                    </Col>
+                    <Col>
+                        <FacilityNameInput facility={facility} actions={actions} /> 
+                    </Col>
+                    <Col>
+                        <FacilityTypeInput facility={facility} actions={actions} />
+                    </Col>
+                </Row>
             </Card.Header>
             <Card.Body>
-                <FacilityMembersCard facility={facility} actions={actions} />
+                <FacilityAttributesEditable facility={facility} actions={actions} />               
+                <FacilityMembersCard facility={facility} actions={actions} />               
             </Card.Body>
             <Card.Body>
                 {JSON.stringify(facility)}

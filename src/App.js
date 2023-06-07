@@ -1,18 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { GroupPage } from 'pages/GroupPage';
-import { FacilityPageProvider } from 'pages/GroupPageProvider';
+import { FacilityPageProvider } from 'pages/FacilityPageProvider';
 import { AppProvider } from 'pages/AppProvider';
 
 function App() {
-  const facility = <FacilityPageProvider id = "66275ffa-a7b3-11ed-b76e-0242ac110002"/>
   return (
     <div className="App">     
-      <AppProvider facility={facility}>
-           {facility}
+      <AppProvider>
+        <FacilityPageProvider id = "66275ffa-a7b3-11ed-b76e-0242ac110002"/>
       </AppProvider>
     </div>
   );

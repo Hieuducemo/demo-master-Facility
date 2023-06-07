@@ -32,10 +32,10 @@ export const actions = {
 /**
  * Zapouzdruje vnorene komponenty a umoznuje jim vyuzivat store - centralni data
  */
-export const AppProvider = (props) => {
+export const AppProvider = ({children}) => {
     return (
         <Provider store={store}>
-            {props.facility}
+            {children}
         </Provider>
     )
 }

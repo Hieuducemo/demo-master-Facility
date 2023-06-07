@@ -1,5 +1,5 @@
 import { FacilityActions } from "./Facilityreducers"
-import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate,FacilityGeoMAsyncUpdate,FacilityGeoLAsyncUpdate} from "./FacilityAsyncActions"
+import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate,FacilityGeoMAsyncUpdate,FacilityGeoLAsyncUpdate, FacilityUpdateAsyncAction} from "./FacilityAsyncActions"
 import {FacilityAsyncInsert} from "./FacilityAsyncActions"
 import { FacilityAsyncDelete } from "./FacilityAsyncActions"
 
@@ -20,7 +20,8 @@ export const bindFacilityActions = (dispatch) => {
         onFacilityMemberAdd: ({FacilityId,member}) => dispatch(FacilityActions.Facility_memberAdd({FacilityId,member})),
         onFacilityTypeUpdate: ({facility,newType}) =>dispatch(FacilityActions.Facility_TypeUpdate({facility,newType})),
 
-        FacilityMemberNameAsycnUpdate: (facility) => dispatch(FacilityMemberNameAsyncUpdate(facility)),
+        // FacilityMemberNameAsycnUpdate: (facility) => dispatch(FacilityMemberNameAsyncUpdate(facility)),
+        FacilityUpdateAsyncAction: (facility) => dispatch(FacilityUpdateAsyncAction(facility)),
 
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         

@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 
 import { FacilityMembersTable } from './FacilityMembersTable';
 import { FacilityMemberAddButton } from "./FacilityMemberAddButton";
+import { FacilitySearch } from "./FacilitySearch";
 /**
  * Renders a card containing a list of Facility members.
  */
@@ -17,6 +18,7 @@ export const FacilityMembersCard = ({facility, actions}) => {
             </Card.Header>
             <Card.Body>
                 <FacilityMembersTable facility={facility} actions={actions}/>
+                <FacilitySearch />
             </Card.Body>
         </Card>
     )

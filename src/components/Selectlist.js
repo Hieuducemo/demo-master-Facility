@@ -17,7 +17,7 @@ export const SelectInput = ({ id, value, onChange, placeholder }) => {
   );
 
   return (
-    <select value={localValue} placeholder={placeholder} onChange={localOnChange}>
+    <select className='form-control' value={localValue} placeholder={placeholder} onChange={localOnChange}>
       <option value="764217ee-a7a0-11ed-b76e-0242ac110002" data-name="areál">areál</option>
       <option value="76421cf8-a7a0-11ed-b76e-0242ac110002" data-name="budova">budova</option>
       <option value="76421e10-a7a0-11ed-b76e-0242ac110002" data-name="patro">patro</option>

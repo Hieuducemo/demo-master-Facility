@@ -17,6 +17,9 @@ export const FacilityMembersTable = ({facility, actions}) => {
                     <th>Geolocation</th>
                     <th>Nástroje</th>
                 </tr>
+                <tr>
+                    <th className="table-danger" colSpan={5}>Do not make rows editable, just add, remove ...</th>
+                </tr>
             </thead>
             <tbody>
                 {facility?.subFacilities?.map(

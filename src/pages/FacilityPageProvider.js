@@ -18,7 +18,7 @@ export const FacilityPageProvider = ({id}) => {
     //vyber vsech skupin ze store
     const facilities = useSelector(state => state.facilities)
     //vyber idcka u skupiny, ktere bylo vybrano
-    const selectedId = useSelector(state => state.facilities.selectedId)
+    // const selectedId = useSelector(state => state.facilities.selectedId)
     //vyber skupiny ze store, ktera ma byt zobrazena
     const facility = facilities[id] //|| {id: id}
     console.log(facilities)
@@ -28,9 +28,8 @@ export const FacilityPageProvider = ({id}) => {
     useEffect(
         () => {
             console.log('FacilityPageProvider refetch ' + id)
-            actions.FacilityFetch(id)
-                     
-        }, [id, selectedId]
+            actions.FacilityFetch(id)         
+        }, []
     )
 
     if (facility) {

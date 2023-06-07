@@ -346,3 +346,83 @@ export const FacilityAsyncDelete = (facility)=>(dispatch,getState)=>{
             }
         )   
 }
+
+
+const FacilityUpdateQueryJSON = (facility) => {
+    return {
+        query: `mutation(
+            $id: ID!
+          $lastchange: DateTime!
+          $name: String
+          $facilitytype_id: ID
+          $nameEn: String
+          $label: String
+          $address: String
+          $valid: Boolean
+          $capacity: Int
+          $geometry: String
+          $geolocation: String
+          $master_facility_id: ID
+          ) {
+        result: facilityUpdate(facility: {
+              id: $id
+          lastchange: $lastchange
+          name: $name
+          facilitytypeId: $facilitytype_id
+          nameEn: $nameEn
+          label: $label
+          address: $address
+          valid: $valid
+          capacity: $capacity
+          geometry: $geometry
+          geolocation: $geolocation
+          masterFacilityId: $master_facility_id
+        }) {
+          id
+          msg
+          facility {
+            id
+            lastchange
+            name
+            type { id name }
+            nameEn
+            label
+            address
+            valid
+            capacity
+            geometry
+            geolocation
+            masterFacility { id name }
+          }
+        }
+      }`,
+        variables: {
+            ...facility, 
+            master_facility_id: facility?.master_facility_id,
+            facilitytype_id: facility?.facilitytype_id
+        }
+        }
+    }
+
+export const FacilityUpdateQuery = (facility) =>
+    authorizedFetch('', {
+        body: JSON.stringify(FacilityUpdateQueryJSON(facility))
+    })
+
+export const FacilityUpdateAsyncAction = (facility) => (dispatch, getState) => {
+    return FacilityUpdateQuery(facility)
+    //return authorizedFetch('/api/gql', params)
+        .then(
+            resp => resp.json()
+        )
+        .then(
+            json => {
+                const newFacility = json?.data?.result?.facility
+                if (newFacility) {
+                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
+                    dispatch(FacilityActions.Facility_update({...newFacility}))
+                }
+                return json
+            }
+        )   
+}
