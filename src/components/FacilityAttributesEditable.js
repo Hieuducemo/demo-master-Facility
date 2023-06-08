@@ -34,7 +34,7 @@ export const FacilityAttributesEditable = ({facility, actions}) => {
         </Col>
     </Row>
     <Row>
-        <Col md={2}><b>Geometry</b></Col>
+        <Col md={2}><b>Geolocation</b></Col>
         <Col md={10}>
             <FacilityGeolocationInput facility={facility} actions={actions} />
         </Col>

@@ -39,7 +39,7 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
     if(subFacility.valid){
     return (
         <tr>
-            <td>{index} {subFacility.id}</td>
+            <td>{subFacility.id}</td>
             <td>
                 <TextInput placeholder={"name"} id={subFacility.id} value={subFacility.name} onChange={onChangeName}/>
             </td>

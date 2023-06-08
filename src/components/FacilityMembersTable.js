@@ -20,7 +20,7 @@ export const FacilityMembersTable = ({facility, actions}) => {
             </thead>
             <tbody>
                 {facility?.subFacilities?.map(
-                    (m, index) => <FacilityMemberTableRow key={m.id} subFacility={m} index={index + 1} actions={actions} gid={facility.id}/>
+                    (m) => <FacilityMemberTableRow key={m.id} subFacility={m}  actions={actions} gid={facility.id}/>
                 )}
             </tbody>
         </table>
