@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+.facility-card{
+  background-color: green;
+}
+.card-edit{
+  background-color: rgb(0, 128, 0);
+}
+.facility-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subfacilities-title {
+  color: yellow;
+}
+.card-edit {
+  color: yellow;
+  font-size: 30px; 
+}
+.card-background {
+  background-color: rgb(173, 161, 230); 
+}
+.edit-body{
+  background-color: rgb(183, 202, 242);
+}
+.table-body{
+  background-color: rgb(183, 217, 242);
+}
+body {
+  background-image: url("D:\New folder (4)\demo-master-master\image.jpg");
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center top 0%;
+}
