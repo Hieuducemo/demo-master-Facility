@@ -7,24 +7,19 @@ import { FacilityMemberRemoveButton } from './FacilityMemberRemoveButton';
  * @param {*} param0 
  * @returns 
  */
-export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
+export const FacilityMemberTableRow = ({subFacility, actions, gid}) => {
 
     const onChangeName = (value) => {
         if (actions.onFacilityMemberUpdate) {
             console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, name: value}}         
-            //actions.onFacilityMemberUpdate(payload)
-            actions.FacilityAsyncUpdate({...subFacility, name: value})
-            .then(json=>console.log("Facilit1NameInput", json.data.facilityUpdate.msg))
+            actions.onFacilityMemberUpdate(payload)
         }
     }
-    const onChangeGeometry =async(value) => {
+    const onChangeGeometry =(value) => {
         if (actions.onFacilityMemberUpdate) {
             const payload = {facility: {id: gid}, subFacility: {...subFacility, geometry: value}}         
-            actions.onFacilityMemberUpdate(payload)   
-            const a = {...subFacility, geometry: value}   
-            const response = await actions.FacilityGeoMAsyncUpdate(a)
-            console.log("FacilityGeoMInput",response?.data?.facilityUpdate?.msg)  
+            actions.onFacilityMemberUpdate(payload)     
         }
     }
     const onChangeGeolocation = (value) => {
@@ -32,8 +27,6 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, geolocation: value}}         
             actions.onFacilityMemberUpdate(payload)
-            actions.FacilityGeoLAsyncUpdate({...subFacility, geolocation: value})
-            .then(json=>console.log("FacilityGeoLInput", json.data.facilityUpdate.msg)) 
         }
     }
     if(subFacility.valid){
@@ -50,7 +43,7 @@ export const FacilityMemberTableRow = ({index, subFacility, actions, gid}) => {
             <TextInput placeholder={"0"} id={subFacility.id} value={subFacility.geolocation} onChange={onChangeGeolocation}/> 
             </td>
             <td>
-                <FacilityMemberRemoveButton facility={{id: gid}} subFacility={subFacility} actions={actions} />
+             <FacilityMemberRemoveButton facility={{id: gid}} subFacility={subFacility} actions={actions} />
             </td>
         </tr>
     )

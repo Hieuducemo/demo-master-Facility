@@ -18,7 +18,7 @@ export const FacilityMembersTable = ({facility, actions}) => {
                     <th>Nástroje</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="table-body">
                 {facility?.subFacilities?.map(
                     (m) => <FacilityMemberTableRow key={m.id} subFacility={m}  actions={actions} gid={facility.id}/>
                 )}

@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { FacilityMembersCard } from 'components/FacilityMembersCard';
 import { FacilityLarge } from 'components/FacilityLarge';
-
-import { fakeQueryFacility } from 'queries/fakequeryFacility';
-import { FacilityFetch } from 'reducers/FacilityAsyncActions';
 import { actions } from './AppProvider';
 
 /**
@@ -17,13 +14,10 @@ export const FacilityPageProvider = ({id}) => {
 
     //vyber vsech skupin ze store
     const facilities = useSelector(state => state.facilities)
-    //vyber idcka u skupiny, ktere bylo vybrano
-    // const selectedId = useSelector(state => state.facilities.selectedId)
+   
     //vyber skupiny ze store, ktera ma byt zobrazena
     const facility = facilities[id] //|| {id: id}
     console.log(facilities)
-    //console.log(Facility)
-    
     
     useEffect(
         () => {

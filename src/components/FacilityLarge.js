@@ -14,7 +14,6 @@ import { FacilityAttributesEditable } from "./FacilityAttributesEditable";
  */
 
 export const FacilityLarge = ({facility, actions}) => {
-    console.log("lastchange",facility.name)
     return (
         <Card>
             <Card.Header>
@@ -30,12 +29,10 @@ export const FacilityLarge = ({facility, actions}) => {
                     </Col>
                 </Row>
             </Card.Header>
-            <Card.Body>
+            <Card.Body className="card-background">
                 <FacilityAttributesEditable facility={facility} actions={actions} />               
-                <FacilityMembersCard facility={facility} actions={actions} />               
-            </Card.Body>
-            <Card.Body>
-                {JSON.stringify(facility)}
+                <FacilityMembersCard facility={facility} actions={actions} />
+              
             </Card.Body>
         </Card>
     )

@@ -2,7 +2,6 @@ import { TextInput } from './TextInput';
 
 export const FacilityGeometryInput = ({facility, actions}) => {
     const onchange = (value) => {
-        console.log("changed", value)
         actions.FacilityUpdateAsyncAction({...facility, geometry: value})
             .then(json=>console.log("FacilityNameInput", json.data.facilityUpdate.msg))
     }

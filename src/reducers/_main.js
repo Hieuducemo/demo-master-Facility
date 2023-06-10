@@ -1,7 +1,7 @@
 import { FacilityActions } from "./Facilityreducers"
-import { FacilityFetch, FacilityTypeAsyncUpdate,FacilityAsyncUpdate,FacilityGeoMAsyncUpdate,FacilityGeoLAsyncUpdate, FacilityUpdateAsyncAction} from "./FacilityAsyncActions"
+import { FacilityFetch, FacilityUpdateAsyncAction} from "./FacilityAsyncActions"
 import {FacilityAsyncInsert} from "./FacilityAsyncActions"
-import { FacilityAsyncDelete } from "./FacilityAsyncActions"
+
 
 /**
  * vytvori actions, ktere pri volani uz vse radne provedou
@@ -20,19 +20,14 @@ export const bindFacilityActions = (dispatch) => {
         onFacilityMemberAdd: ({FacilityId,member}) => dispatch(FacilityActions.Facility_memberAdd({FacilityId,member})),
         onFacilityTypeUpdate: ({facility,newType}) =>dispatch(FacilityActions.Facility_TypeUpdate({facility,newType})),
 
-        // FacilityMemberNameAsycnUpdate: (facility) => dispatch(FacilityMemberNameAsyncUpdate(facility)),
         FacilityUpdateAsyncAction: (facility) => dispatch(FacilityUpdateAsyncAction(facility)),
 
         FacilityFetch: (id) => dispatch(FacilityFetch(id)),
         
-       /* FacilityFakeFetch: (id) => dispatch(FacilityFakeFetch(id)),    */
-        FacilityAsyncUpdate: (facility) => dispatch(FacilityAsyncUpdate(facility)),
-        FacilityTypeAsyncUpdate: (payload) => {dispatch(FacilityTypeAsyncUpdate(payload))}, 
-        FacilityGeoMAsyncUpdate:(subFacility)=>dispatch(FacilityGeoMAsyncUpdate(subFacility)), 
-        FacilityGeoLAsyncUpdate:(facility)=>dispatch(FacilityGeoLAsyncUpdate(facility)), 
+
         FacilityAsyncInsert:(facility)=>dispatch(FacilityAsyncInsert(facility)), 
         FacilityAsyncDelete:(facility)=>dispatch(FacilityAsyncDelete(facility))
         
-       /* FacilityAsyncTypeUpdate:(facility) => dispatch(FacilityAsyncTypeUpdate(facility))*/
+      
     }
 }

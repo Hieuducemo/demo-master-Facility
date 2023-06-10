@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-//import { Loading, LoadingError, authorizedFetch } from 'generals/useQuery';
 import { useEffect, useState } from "react";
 import { authorizedFetch } from "queries/authorizedFetch";
 import { Search, XLg } from "react-bootstrap-icons";
@@ -74,12 +73,7 @@ export const FacilitySearch = ({onSelect}) => {
             FacilitysBy3LettersQuery(currentLetters).then(
                 response => response.json()
             )
-            /*.then(
-                item => {
-                    console.log(JSON.stringify(item))
-                    return item
-                }
-            )*/
+            
             .then(json => json.data)
             .then(hints => {
                 if (hints) {
@@ -110,7 +104,7 @@ export const FacilitySearch = ({onSelect}) => {
         <div style={{position: "relative"}}>
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1"><Search /></span>
-                <input className='form-control' placeholder="Vyhledávání prostor" aria-label="Vyhledávání prostor" onChange={onChange} value={inputValue}/>
+                <input className='form-control' placeholder="Find an estate" aria-label="Vyhledávání prostor" onChange={onChange} value={inputValue}/>
                 <span className="input-group-text" id="basic-addon2" onClick={closeSearch}><XLg /></span>
             </div>
             <Suggestions facilityRecords={facilityRecords} Suggestion={FacilitySugestion} onSelect={onSelect}/>

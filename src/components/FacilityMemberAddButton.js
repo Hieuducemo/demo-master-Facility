@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { v1 } from 'uuid';
 import {AddButton} from './AddButton'
-
-
+import {BsHouseAddFill} from 'react-icons/bs'
 export const FacilityMemberAddButton = ({ facility, actions }) => {
   const [newMember, setNewMember] = useState({
     id: '',
@@ -52,7 +51,7 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
   return (
     <div>
       <input type="text" name="name" placeholder="Enter name" value={newMember.name} onChange={handleChange} />
-      <AddButton onClick={handleAddMember}>Add Subfacility</AddButton>
+      <AddButton onClick={handleAddMember}><BsHouseAddFill /></AddButton>
     </div>
   );
 };

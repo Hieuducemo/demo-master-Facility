@@ -1,21 +1,4 @@
-import { v1 as uuid1 } from 'uuid';
 
-/**
- * Stavova funkce nad dict, pridava prvek
- * @param {*} state 
- * @param {*} action 
- * @returns 
- */
-export const CreateItem = (state, action) => {
-    const item = action.payload;
-    const id = item['id'] || uuid1()
-    if (!item['id']) {
-        item['id'] = id
-    }
-    
-    state[id] = item
-    return state
-}
 
 /**
  * Stavova funkce nad dict, maze prvek
@@ -26,19 +9,6 @@ export const CreateItem = (state, action) => {
 export const DeleteItem = (state, action) => {
     const item = action.payload;
     delete state[item.id]
-    return state
-}
-
-/**
- * Stavova funkce nad dict, dela replace
- * @param {*} state 
- * @param {*} action 
- * @returns 
- */
-export const ReplaceItem = (state, action) => {
-    const newItem = action.payload;
-    state[newItem.id] = newItem
-
     return state
 }
 

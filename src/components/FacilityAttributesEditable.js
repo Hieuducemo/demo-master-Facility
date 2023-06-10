@@ -10,9 +10,11 @@ export const FacilityAttributesEditable = ({facility, actions}) => {
     return (
         <Card>
             <Card.Header>
-                        Facility {facility.name} ({facility.id})
+                <div className = "card-edit">
+                        Facility: {facility.name}
+                </div>      
             </Card.Header>
-            <Card.Body>
+            <Card.Body className = "edit-body">
     <Row>
         <Col md={2}><b>Název</b></Col>
         <Col md={10}>
