@@ -30,7 +30,10 @@ Acceptable result*
 Trying to fetch the type to sever(still not work)
 ### 31/05/2023
 Succesfully fetch facility type 
-# 3/06/2023
+### 3/06/2023
 Succesfully fetch add function 
-# 7/06/2023
+### 7/06/2023
 Fetching successful with teacher's help, SVG overlay incoming  
+### 06/10/2023
+what is the projekt like today?
+<img width="933" alt="image" src="https://github.com/Hieuducemo/demo-master-Facility/assets/115462421/e5783ef0-3f80-48eb-a087-4720c0390245">
