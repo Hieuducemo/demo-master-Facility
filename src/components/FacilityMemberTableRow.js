@@ -11,7 +11,6 @@ export const FacilityMemberTableRow = ({subFacility, actions, gid}) => {
 
     const onChangeName = (value) => {
         if (actions.onFacilityMemberUpdate) {
-            console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, name: value}}         
             actions.onFacilityMemberUpdate(payload)
         }
@@ -24,7 +23,6 @@ export const FacilityMemberTableRow = ({subFacility, actions, gid}) => {
     }
     const onChangeGeolocation = (value) => {
         if (actions.onFacilityMemberUpdate) {
-            console.log(subFacility, value)
             const payload = {facility: {id: gid}, subFacility: {...subFacility, geolocation: value}}         
             actions.onFacilityMemberUpdate(payload)
         }
