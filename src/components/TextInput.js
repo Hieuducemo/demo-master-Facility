@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from 'react'
 
 import { CreateDelayer } from 'utils/CreateDelayer'
 
-
 /**
  * Editable Text (input type="text")
  * @param {*} id mandatory identification, often related to id of entity 

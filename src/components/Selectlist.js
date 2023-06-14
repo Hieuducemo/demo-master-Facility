@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 export const SelectInput = ({ id, value, onChange, placeholder }) => {
   const [localValue, setLocalValue] = useState(value)
-
+  
   const localOnChange = useCallback(
     (e) => {
       const newValue = e.target.value;

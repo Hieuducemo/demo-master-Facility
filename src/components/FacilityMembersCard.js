@@ -7,7 +7,6 @@ import { FacilitySearch } from "./FacilitySearch";
  * Renders a card containing a list of Facility members.
  */
 export const FacilityMembersCard = ({facility, actions}) => {
-
     return (
         <Card>
             <Card.Header>

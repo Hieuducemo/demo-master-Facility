@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FacilityMembersCard } from 'components/FacilityMembersCard';
 import { fakeQueryFacility } from 'queries/fakequeryFacility';
 import { useSelector } from 'react-redux';
 

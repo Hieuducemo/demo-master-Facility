@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 import { authorizedFetch } from "queries/authorizedFetch";
 import { Search, XLg } from "react-bootstrap-icons";
 
-
-
 export const FacilitysBy3LettersQueryJSON = (letters) => ({
     "query":
         `query($letters: String!) {

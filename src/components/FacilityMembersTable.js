@@ -5,6 +5,7 @@ import { FacilityMemberTableRow } from "./FacilityMemberTableRow"
  * @param {*} param0 
  * @returns 
  */
+
 export const FacilityMembersTable = ({facility, actions}) => {
     console.log(facility.subFacilities)
     return (

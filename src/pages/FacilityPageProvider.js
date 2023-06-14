@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { FacilityMembersCard } from 'components/FacilityMembersCard';
 import { FacilityLarge } from 'components/FacilityLarge';
 import { actions } from './AppProvider';
 
