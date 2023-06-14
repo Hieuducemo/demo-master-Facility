@@ -5,7 +5,7 @@ import { FacilityTypeInput } from "./FacilityTypeInput"
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap/esm";
 import { FacilityAttributesEditable } from "./FacilityAttributesEditable";
-
+import {ShowMap} from "./Map"
 
 /**
  * Renders a card describing a Facility in detailed form.
@@ -32,7 +32,7 @@ export const FacilityLarge = ({facility, actions}) => {
             <Card.Body className="card-background">
                 <FacilityAttributesEditable facility={facility} actions={actions} />               
                 <FacilityMembersCard facility={facility} actions={actions} />
-              
+                <ShowMap facility={facility}/>
             </Card.Body>
         </Card>
     )
