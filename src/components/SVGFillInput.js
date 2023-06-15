@@ -6,7 +6,7 @@ export const SVGFillColorInput =({color,onChange}) =>{
       <label>Fill Color:</label>
       <input
         type="color"
-        name="fillColor"
+        id="colorInput"
         value={color}
         onChange={onChange}
       />

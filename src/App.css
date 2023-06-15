@@ -56,13 +56,13 @@
   font-size: 30px; 
 }
 .card-background {
-  background-color: rgb(173, 161, 230); 
+  background-color:  rgb(183, 147, 92);
 }
 .edit-body{
-  background-color: rgb(183, 202, 242);
+  background-color: rgb(183, 147, 92);
 }
 .table-body{
-  background-color: rgb(183, 217, 242);
+  background-color: rgb(183, 147, 92);
 }
 body {
   background-image: url("D:\New folder (4)\demo-master-master\image.jpg");

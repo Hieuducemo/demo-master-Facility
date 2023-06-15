@@ -15,7 +15,9 @@
 
 .leaflet-container {
     height: 100vh;
+    transform: scale(0.899); 
 }
+
 
 /* styles.css */
 
@@ -35,7 +37,3 @@
     height: 100%;
 }
   
-.leaflet-pane.svgOverlay circle {
-    fill: lightgray;
-    opacity: 0.5;
-}

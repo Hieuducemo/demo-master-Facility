@@ -1,69 +1,50 @@
-import "./Mapstyle.css"
-import "leaflet/dist/leaflet.css"
-import React, { useState } from 'react'
-import { MapContainer, TileLayer, SVGOverlay, Circle } from 'react-leaflet'
-import {RadiusInput} from './MapRadiusInput'
-import { SVGCircleColorInput } from "./SVGColorInput"
+
+import React, { useState } from 'react';
+import './Mapstyle.css';
+import { MapContainer, TileLayer, SVGOverlay } from 'react-leaflet';
+import "leaflet/dist/leaflet.css";
 import { SVGFillColorInput } from "./SVGFillInput"
 import { SVGOpacityInput } from "./SVGOpacityInput"
 
 export const ShowMap = ({ facility }) => {
-  const location = facility.geolocation
-  if(location!==null){
-  const [x1, y1] = location.split(",").map((item) => item.trim())
-  const x = parseFloat(x1)
-  const y = parseFloat(y1)
-  const center = [x, y]
-  const radius = 0.4
-  const bounds = [
-    [center[0] - radius * 0.01, center[1] - radius * 0.01],
-    [center[0] + radius * 0.01, center[1] + radius * 0.01]
-  ]
+  const coordinatesString = facility.geometry;
+  const coordinatesArray = JSON.parse(coordinatesString);
 
-  const [circleProps, setCircleProps] = useState({
-    radius: 100,
-    color: "red",
-    fillColor: "lightblue",
-    fillOpacity: 0.3
-  })
+  const locationString = facility.geolocation;
+  const locationData = JSON.parse(locationString);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCircleProps((prevProps) => ({
-      ...prevProps,
-      [name]: value
-    }))
-  }
-  
+  const center = locationData.location;
+  const zoom = locationData.zoom;
+
+  const [color, setColor] = useState('blue');
+  const [opacity, setOpacity] = useState(0.2);
+
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  };
+
+  const handleOpacityChange = (event) => {
+    setOpacity(event.target.value);
+  };
+
+  const svgOverlay = (
+    <SVGOverlay bounds={coordinatesArray}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" style={{ width: '100%', height: '100%' }}>
+        <rect x="0" y="0" width="1" height="1" fill={color} opacity={opacity} />
+      </svg>
+    </SVGOverlay>
+  );
+
   return (
-    <div className="map-container">
-      <MapContainer center={center} zoom={13} className="map">
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <SVGOverlay bounds={bounds}>
-          <text x="50%" y="50%" stroke="red">
-            {facility.name}
-          </text>
-          <Circle
-            center={center}
-            radius={circleProps.radius}
-            pathOptions={{
-              color : circleProps.color,
-              fillColor: circleProps.fillColor,
-              fillOpacity: circleProps.fillOpacity
-            }}
-          />
-        </SVGOverlay>
-      </MapContainer>
-      <div className="overlay">
-        <RadiusInput radius={circleProps.radius} onChange={handleInputChange}/>
-        <SVGCircleColorInput color={circleProps.color} onChange={handleInputChange}/>
-        <SVGFillColorInput color={circleProps.fillColor} onChange={handleInputChange}/>
-        <SVGOpacityInput opacity={circleProps.fillOpacity} onChange={handleInputChange}/>
+    <div>
+      <SVGFillColorInput color={color} onChange={handleColorChange}/>
+      <div>
+      <SVGOpacityInput opacity={opacity} onChange={handleOpacityChange}/>
       </div>
+      <MapContainer center={center} zoom={zoom} style={{ height: '100vh', width: '100%' }}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {svgOverlay}
+      </MapContainer>
     </div>
-  )
-          }
-}
+  );
+};

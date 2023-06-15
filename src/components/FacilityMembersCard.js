@@ -10,11 +10,11 @@ export const FacilityMembersCard = ({facility, actions}) => {
     return (
         <Card>
             <Card.Header>
-                <Card.Title>
-                    <div className='facility-card'>
+                <Card.Title className='facility-card'>
+                    
                     <h3 className="subfacilities-title">Subfacilities</h3>
-                    <th><FacilityMemberAddButton facility={facility} actions={actions} /></th>
-                    </div>
+                    <FacilityMemberAddButton facility={facility} actions={actions} />
+                    
                 </Card.Title>
             </Card.Header>
             <Card.Body>
