@@ -37,3 +37,7 @@ Fetching successful with teacher's help, SVG overlay incoming
 ### 06/10/2023
 what is the projekt like today?
 <img width="933" alt="image" src="https://github.com/Hieuducemo/demo-master-Facility/assets/115462421/e5783ef0-3f80-48eb-a087-4720c0390245">
+### 06/14/2023
+Finish the project by adding map of facility and inputbox for SVGoverlay. Next mission is to put in comments!!!
+
+
