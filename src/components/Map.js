@@ -2,6 +2,10 @@ import "./Mapstyle.css"
 import "leaflet/dist/leaflet.css"
 import React, { useState } from 'react'
 import { MapContainer, TileLayer, SVGOverlay, Circle } from 'react-leaflet'
+import {RadiusInput} from './MapRadiusInput'
+import { SVGCircleColorInput } from "./SVGColorInput"
+import { SVGFillColorInput } from "./SVGFillInput"
+import { SVGOpacityInput } from "./SVGOpacityInput"
 
 export const ShowMap = ({ facility }) => {
   const location = facility.geolocation
@@ -54,45 +58,10 @@ export const ShowMap = ({ facility }) => {
         </SVGOverlay>
       </MapContainer>
       <div className="overlay">
-        <div className="input-container">
-          <label>SVG Radius:</label>
-          <input
-            type="number"
-            name="radius"
-            value={circleProps.radius}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="input-container">
-          <label>SVG Color:</label>
-          <input
-               type="color"
-               name="color"
-               value={circleProps.color}
-               onChange={handleInputChange}
-          />
-        </div>
-        <div className="input-container">
-          <label>Fill Color:</label>
-          <input
-           type="color"
-           name="fillColor"
-           value={circleProps.color}
-           onChange={handleInputChange}
-          />
-        </div>
-        <div className="input-container">
-          <label>Fill Opacity:</label>
-          <input
-            type="number"
-            name="fillOpacity"
-            step="0.1"
-            min="0"
-            max="1"
-            value={circleProps.fillOpacity}
-            onChange={handleInputChange}
-          />
-        </div>
+        <RadiusInput radius={circleProps.radius} onChange={handleInputChange}/>
+        <SVGCircleColorInput color={circleProps.color} onChange={handleInputChange}/>
+        <SVGFillColorInput color={circleProps.fillColor} onChange={handleInputChange}/>
+        <SVGOpacityInput opacity={circleProps.fillOpacity} onChange={handleInputChange}/>
       </div>
     </div>
   )
