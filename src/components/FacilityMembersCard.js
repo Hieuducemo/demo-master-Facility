@@ -11,10 +11,8 @@ export const FacilityMembersCard = ({facility, actions}) => {
         <Card>
             <Card.Header>
                 <Card.Title className='facility-card'>
-                    
                     <h3 className="subfacilities-title">Subfacilities</h3>
                     <FacilityMemberAddButton facility={facility} actions={actions} />
-                    
                 </Card.Title>
             </Card.Header>
             <Card.Body>

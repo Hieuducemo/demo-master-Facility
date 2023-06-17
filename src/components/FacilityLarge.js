@@ -1,10 +1,10 @@
-import Card from "react-bootstrap/Card";
-import { FacilityMembersCard } from './FacilityMembersCard';
-import { FacilityNameInput } from "./FacilityNameInput";
+import Card from "react-bootstrap/Card"
+import { FacilityMembersCard } from './FacilityMembersCard'
+import { FacilityNameInput } from "./FacilityNameInput"
 import { FacilityTypeInput } from "./FacilityTypeInput"
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap/esm";
-import { FacilityAttributesEditable } from "./FacilityAttributesEditable";
+import { Row } from "react-bootstrap"
+import { Col } from "react-bootstrap/esm"
+import { FacilityAttributesEditable } from "./FacilityAttributesEditable"
 import {ShowMap} from "./Map"
 
 /**

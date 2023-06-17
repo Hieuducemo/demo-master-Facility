@@ -25,15 +25,20 @@ export const FacilitysBy3LettersQuery = (letters) =>
 
 
 const FacilitySugestion = ({facility, onSelect}) => {
+    
     const _onSelect = () => {
         if (onSelect) {
-            onSelect(facility)
+          onSelect(facility);
+          setSelectedSuggestion(facility);
         }
-    }
+      };
+      
     return (
-        <Col>
-            <span style={{cursor: "pointer"}} onClick={_onSelect}>{facility.name}</span>
-        </Col>
+        <Col key={facility.id}>
+        <span style={{ cursor: "pointer" }} onClick={_onSelect}>
+          {facility.name}
+        </span>
+      </Col>
     )
 }
 
@@ -49,9 +54,8 @@ const Suggestions = ({facilityRecords, Suggestion, onSelect}) => {
                     <Card.Body>
                         <Row>
                             {facilityRecords.map( 
-                                item => <Row><Col key={item.id}>
-                                    <Suggestion onSelect={onSelect} facility={item}/>
-                                </Col></Row>
+                                item => 
+                                    <Suggestion key={item.id} onSelect={onSelect} facility={item}/>                               
                             )}
                         </Row>
                     </Card.Body>
@@ -65,6 +69,7 @@ export const FacilitySearch = ({onSelect}) => {
     const [ facilityRecords, setFacilityRecords ] =  useState([])
     const [ currentLetters, setCurrentLetters ] =  useState('')
 
+    
 
     useEffect(() =>{
         if (currentLetters.length > 2) {
@@ -89,15 +94,12 @@ export const FacilitySearch = ({onSelect}) => {
         if (newValue.length < 3) {
             setFacilityRecords([])
         }
-
         setInputValue(newValue)
     }
-
     const closeSearch = () => {
-        setInputValue('')
-        setFacilityRecords([])
+        setInputValue("");
+        setFacilityRecords([]); 
     }
-    
     return (
         <div style={{position: "relative"}}>
             <div className="input-group mb-3">

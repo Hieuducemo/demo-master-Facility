@@ -82,56 +82,6 @@ export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
     return fetch('/api/gql', params)
 }
 
-export const FacilityAsyncDelete = (facility)=>(dispatch,getState)=>{
-    const FacilityMutationJSON =(facility)=>{
-        return{
-            query: `mutation (
-                  $id:ID!,
-                  $valid:Boolean!,
-                  $lastchange:DateTime!
-                  ){
-                    facilityUpdate(facility:{
-                        id:$id, 
-                        valid:$valid, 
-                        lastchange:$lastchange                 
-                    })
-                    {
-                        id                     
-                        msg
-                    }
-                  }
-            `, 
-            variables: facility
-        }
-    }
-    const params = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        redirect: 'follow', // manual, *follow, error
-        body: JSON.stringify(FacilityMutationJSON(facility))
-    }
-    return fetch('/api/gql', params)
-    //return authorizedFetch('/api/gql', params)
-        .then(
-            resp => resp.json()
-        )
-        .then(
-            json => {
-                const msg = json.data.facilityUpdate.msg
-                if (msg === "fail") {
-                    console.log("Update selhalo")
-                } else {
-                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
-                    const lastchange = json.data.facilityUpdate.facility.lastchange
-                    dispatch(FacilityActions.Facility_update({...facility, lastchange: lastchange}))
-                }
-                return json
-            }
-        )   
-}
 
 
 const FacilityUpdateQueryJSON = (facility) => {

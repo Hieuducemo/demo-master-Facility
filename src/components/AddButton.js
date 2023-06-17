@@ -27,7 +27,7 @@ export const AddButton = ({children, onClick}) => {
         return (
             <>
                 <button className='btn btn-sm btn-warning' onClick={setState0}>{children}</button>
-                <button className='btn btn-sm btn-danger' onClick={onClick}>{children}</button>
+                <button className='btn btn-sm btn-safe' onClick={onClick}>{children}</button>
             </>
         )
     }

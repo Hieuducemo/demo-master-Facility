@@ -11,7 +11,6 @@ export const DeleteItem = (state, action) => {
     delete state[item.id]
     return state
 }
-
 /**
  * Stavova funkce nad dict, dela update
  * @param {*} state 
@@ -27,16 +26,3 @@ export const UpdateItem = (state, action) => {
     console.log("updateItem",oldItem,newItem)
     return state
 }    
-
-/**
- * Stavova funkce nad dict, pracude s klicem selectedId
- * @param {*} state 
- * @param {*} action 
- * @returns 
- */
-export const SelectItem = (state, action) => {
-    const item = action.payload
-    state.selectedId = item.id
-
-    return state
-}

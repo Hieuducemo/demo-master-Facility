@@ -15,13 +15,13 @@ export const SingleFacility = {
               subFacilities: [
                 {
                   id: "662763a6-a7b3-11ed-b76e-0242ac110002",
-                  name: "Budova A"
+                  name: "Budova Q"
                 }
               ]
             },
             {
               id: "662763a6-a7b3-11ed-b76e-0242ac110002",
-              name: "Budova A",
+              name: "Budova Q",
               lastchange: "2023-05-03T19:23:58.919685",
               geometry: null,
               geolocation: null,
@@ -52,7 +52,7 @@ export const SingleFacility = {
               },
               masterFacility: {
                 id: "662763a6-a7b3-11ed-b76e-0242ac110002",
-                name: "Budova A"
+                name: "Budova Q"
               },
               subFacilities: [
                 {

@@ -1,7 +1,6 @@
 import { SelectInput } from "./Selectlist";
 
 export const FacilityTypeInput=({facility,actions})=>{
-    
     const onchange = (value) => {
         actions.FacilityUpdateAsyncAction({...facility, facilitytype_id: value.type.id})
     }

@@ -7,7 +7,6 @@ import { FacilityMemberTableRow } from "./FacilityMemberTableRow"
  */
 
 export const FacilityMembersTable = ({facility, actions}) => {
-    console.log(facility.subFacilities)
     return (
         <table className="table table-hover table-stripped">
             <thead>
