@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  max-width: 1800px;
+  
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -37,36 +40,57 @@
   }
 }
 .facility-card{
-  background-color: rgb(232, 32, 66);
+  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
 }
 .card-edit{
-  background-color: rgb(0, 128, 0);
+  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
 }
 .facility-card {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.subfacilities-title {
-  color: yellow;
+.table table-hover table-stripped{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
-.card-edit {
+.subfacilities-title {
   color: yellow;
   font-size: 30px; 
 }
+.card-edit {
+  color: yellow;
+  font-size: 40px; 
+}
 .card-background {
-  background-color:  rgb(183, 147, 92);
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
 .edit-body{
-  background-color: rgb(183, 147, 92);
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
 .table-body{
-  background-color: rgb(183, 147, 92);
+ background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.fctL{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }
 body {
-  background-image: url("D:\New folder (4)\demo-master-master\image.jpg");
+  background-image: url("image.jpg");
   background-repeat: no-repeat; 
   background-size: cover; 
   background-position: center top 0%;
+}
+.abc{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.bcd{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.xyz{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.mnk{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+}
+.fcL{
+  background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
 }

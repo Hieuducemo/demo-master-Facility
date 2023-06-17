@@ -8,7 +8,7 @@ import {FacilityGeolocationInput} from "./FacilityGeolocationInput"
 
 export const FacilityAttributesEditable = ({facility, actions}) => {
     return (
-        <Card>
+        <Card className="mnk">
             <Card.Header>
                 <div className = "card-edit">
                         Facility: {facility.name}
@@ -42,9 +42,6 @@ export const FacilityAttributesEditable = ({facility, actions}) => {
         </Col>
     </Row>
 </Card.Body>
-
-            <Card.Body>
-            </Card.Body>
         </Card>
 
     )

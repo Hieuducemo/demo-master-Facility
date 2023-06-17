@@ -9,7 +9,7 @@ import { FacilityMemberTableRow } from "./FacilityMemberTableRow"
 export const FacilityMembersTable = ({facility, actions}) => {
     return (
         <table className="table table-hover table-stripped">
-            <thead>
+            <thead className="abc">
                 <tr>
                     <th>#</th>
                     <th>Name</th>

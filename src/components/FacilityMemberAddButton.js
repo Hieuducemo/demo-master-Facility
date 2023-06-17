@@ -59,7 +59,7 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
   return (
     <div>
       {/* Input field for entering the member's name */}
-      <input
+      <input className="inputBtn"
         type="text"
         name="name"
         placeholder="Enter name"

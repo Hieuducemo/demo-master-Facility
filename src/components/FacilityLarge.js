@@ -15,10 +15,10 @@ import {ShowMap} from "./Map"
 
 export const FacilityLarge = ({facility, actions}) => {
     return (
-        <Card>
+        <Card className="fcL">
             <Card.Header>
                 <Row>
-                    <Col>
+                    <Col className="fctL"> 
                         Facility {facility.name} ({facility.id})
                     </Col>
                     <Col>

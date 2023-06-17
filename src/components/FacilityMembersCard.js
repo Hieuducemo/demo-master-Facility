@@ -9,13 +9,13 @@ import { FacilitySearch } from "./FacilitySearch";
 export const FacilityMembersCard = ({facility, actions}) => {
     return (
         <Card>
-            <Card.Header>
+            <Card.Header className="xyz">
                 <Card.Title className='facility-card'>
                     <h3 className="subfacilities-title">Subfacilities</h3>
-                    <FacilityMemberAddButton facility={facility} actions={actions} />
+                   <FacilityMemberAddButton className="Addbtn" facility={facility} actions={actions} />
                 </Card.Title>
             </Card.Header>
-            <Card.Body>
+            <Card.Body className="bcd">
                 <FacilityMembersTable facility={facility} actions={actions}/>
                 <FacilitySearch />
             </Card.Body>
