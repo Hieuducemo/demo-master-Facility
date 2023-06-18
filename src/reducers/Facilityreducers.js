@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import {  DeleteItem, UpdateItem } from './keyedreducers';
 
 /**
- * stavova funkce, ktera pridat uzivatele ze skupiny 
+ * stavova funkce, ktera pridat nemovitost ze skupiny 
  * @param {*} state 
  * @param {*} action 
  * @returns 
@@ -18,7 +18,7 @@ const FacilityMemberAdd = (state, action) => {
 }
 
 /**
- * stavova funkce, ktera odebere uzivatele ze skupiny 
+ * stavova funkce, ktera odebere nemovitost ze skupiny 
  * @param {*} state 
  * @param {*} action 
  * @returns 
