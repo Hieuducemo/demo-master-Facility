@@ -1,10 +1,20 @@
-import { TextInput } from './TextInput';
+import { TextInput } from './TextInput'
 
-export const FacilityNameInput = ({facility, actions}) => {
+export const FacilityNameInput = ({ facility, actions }) => {
+    // Define onchange function to update facility name
     const onchange = (value) => {
-        actions.FacilityUpdateAsyncAction({...facility, name: value})
-    }
+        // Invoke async action to update the facility name with the new value
+        actions.FacilityUpdateAsyncAction({ ...facility, name: value })
+    };
+
+    // Render FacilityNameInput component
     return (
-        <TextInput id={facility.id} value={facility.name} placeholder={"název skupiny"} onChange={onchange}/>
+        // Render TextInput component with specific props
+        <TextInput
+            id={facility.id}
+            value={facility.name}
+            placeholder={"název facility"}
+            onChange={onchange}
+        />
     )
 }

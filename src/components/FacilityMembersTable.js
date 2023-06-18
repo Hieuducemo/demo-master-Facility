@@ -19,10 +19,12 @@ export const FacilityMembersTable = ({facility, actions}) => {
                 </tr>
             </thead>
             <tbody className="table-body">
-                {facility?.subFacilities?.map(
-                    (m) => <FacilityMemberTableRow key={m.id} subFacility={m}  actions={actions} gid={facility.id}/>
-                )}
-            </tbody>
+         {facility?.subFacilities?.map((m) => (
+        // Iterate over subFacilities array and render FacilityMemberTableRow component for each subFacility
+        <FacilityMemberTableRow key={m.id} subFacility={m} actions={actions} gid={facility.id} />
+    ))}
+</tbody>
+
         </table>
     )
 }

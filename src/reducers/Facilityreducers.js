@@ -1,15 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-import {  DeleteItem, UpdateItem } from './keyedreducers';
+import {  UpdateItem } from './keyedreducers';
 
 /**
- * stavova funkce, ktera pridat uzivatele ze skupiny 
+ * stavova funkce, ktera pridat nemovitost ze skupiny 
  * @param {*} state 
  * @param {*} action 
  * @returns 
  */
 const FacilityMemberAdd = (state, action) => {
-  console.log('volani stavove funkce, add')
   const g = action.payload.FacilityId
   const newMember = action.payload.member
   const facility = state[g]
@@ -18,13 +16,12 @@ const FacilityMemberAdd = (state, action) => {
 }
 
 /**
- * stavova funkce, ktera odebere uzivatele ze skupiny 
+ * stavova funkce, ktera odebere nemovitost ze skupiny 
  * @param {*} state 
  * @param {*} action 
  * @returns 
  */
 const FacilityMemberRemove = (state, action) => {
-    console.log('volani stavove funkce, smazat uzivatele')
     const g = action.payload.facility
     const u = action.payload.subFacility
     const facility = state[g.id]
@@ -39,10 +36,9 @@ const FacilityMemberRemove = (state, action) => {
 export const FacilitySlice = createSlice({
     name: 'Facilitys',
     initialState: {},
-    reducers: {
-        Facility_delete: DeleteItem,
+    reducers: {  
         Facility_update: UpdateItem,
-        
+
         Facility_memberRemove: FacilityMemberRemove,
         Facility_memberAdd: FacilityMemberAdd   
     }

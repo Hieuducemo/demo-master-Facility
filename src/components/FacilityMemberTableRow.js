@@ -8,6 +8,7 @@ import { FacilityMemberRemoveButton } from './FacilityMemberRemoveButton';
  * @returns 
  */
 export const FacilityMemberTableRow = ({subFacility, actions, gid}) => {
+    // Show only valid facilities 
     if(subFacility.valid){
     return (
         <tr>

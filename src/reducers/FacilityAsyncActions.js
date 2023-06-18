@@ -60,10 +60,10 @@ export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
                         name:$name,
                         facilitytypeId:$facilitytypeId, 
                         id:$id, 
-                        masterFacilityId:$masterFacilityId                   
+                        masterFacilityId:$masterFacilityId,       
                     })
                     {
-                        msg
+                        msg            
                     }
                   }
             `, 
