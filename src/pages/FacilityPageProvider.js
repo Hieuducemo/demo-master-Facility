@@ -11,10 +11,10 @@ import { actions } from './AppProvider';
  */
 export const FacilityPageProvider = ({id}) => {
 
-    //vyber vsech skupin ze store
+    //vyber vsech nemovitosti ze store
     const facilities = useSelector(state => state.facilities)
    
-    //vyber skupiny ze store, ktera ma byt zobrazena
+    //vyber nemovitost ze store, ktera ma byt zobrazena
     const facility = facilities[id] //|| {id: id}
     console.log(facilities)
     
@@ -27,7 +27,7 @@ export const FacilityPageProvider = ({id}) => {
 
     if (facility) {
 
-        //skupina je ve store
+        //nemovitost je ve store
         return (          
             <FacilityLarge facility={facility} actions={actions}/>       
         )
