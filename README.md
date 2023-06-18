@@ -39,5 +39,9 @@ what is the projekt like today?
 <img width="933" alt="image" src="https://github.com/Hieuducemo/demo-master-Facility/assets/115462421/e5783ef0-3f80-48eb-a087-4720c0390245">
 ### 06/14/2023
 Finish the project by adding map of facility and inputbox for SVGoverlay. Next mission is to put in comments!!!
+### 06/18/2023
+Project nowadays
+<img width="902" alt="image" src="https://github.com/Hieuducemo/demo-master-Facility/assets/115462421/f7370202-c5a5-4b47-82c6-8d197c6d3257">
+Finishing alpha verze! 
 
 
