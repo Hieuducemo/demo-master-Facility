@@ -3,6 +3,7 @@ import { FacilityQueryLarge } from "queries/FacilityQueryLarge"
 
 import { authorizedFetch } from "queries/authorizedFetch"
 
+// Pomocná funkce pro získání dat o zařízení ze serveru a aktualizaci stavu
 export const FacilityFetchHelper = (id, query, resultselector, dispatch, getState) => {
     const log = (text) => (p) => {
         console.log(text)
@@ -31,7 +32,7 @@ export const FacilityFetchHelper = (id, query, resultselector, dispatch, getStat
 }
 
 /**
- * Fetch the Facility from server checks its type and asks once more for detailed data. Finally puts the result in the store.
+ * Funkce pro získání dat o zařízení ze serveru, ověření jeho typu a načtení detailních dat. Nakonec uloží výsledek do stavu.
  * @param {*} id 
  * @returns 
  */
@@ -48,6 +49,7 @@ export const FacilityFetch = (id) => (dispatch, getState) => {
     return bodyfunc()
 }
 
+// Funkce pro vložení nového zařízení do systému
 export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
     const FacilityMutationJSON =(member)=>{
         return{
@@ -83,7 +85,7 @@ export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
 }
 
 
-
+// JSON dotaz pro aktualizaci dat o zařízení
 const FacilityUpdateQueryJSON = (facility) => {
     return {
         query: `mutation(
@@ -140,14 +142,15 @@ const FacilityUpdateQueryJSON = (facility) => {
         }
     }
 
+// Funkce pro aktualizaci dat o zařízení (asynchronní akce)
 export const FacilityUpdateQuery = (facility) =>
     authorizedFetch('', {
         body: JSON.stringify(FacilityUpdateQueryJSON(facility))
     })
 
+// Asynchronní akce pro aktualizaci dat o zařízení
 export const FacilityUpdateAsyncAction = (facility) => (dispatch, getState) => {
     return FacilityUpdateQuery(facility)
-    //return authorizedFetch('/api/gql', params)
         .then(
             resp => resp.json()
         )
@@ -155,7 +158,6 @@ export const FacilityUpdateAsyncAction = (facility) => (dispatch, getState) => {
             json => {
                 const newFacility = json?.data?.result?.facility
                 if (newFacility) {
-                    //mame hlasku, ze ok, musime si prebrat token (lastchange) a pouzit jej pro priste
                     dispatch(FacilityActions.Facility_update({...newFacility}))
                 }
                 return json
