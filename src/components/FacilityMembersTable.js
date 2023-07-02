@@ -1,9 +1,12 @@
 import { FacilityMemberTableRow } from "./FacilityMemberTableRow"
 
 /**
- * List of members as a table
- * @param {*} param0 
- * @returns 
+ * Renders a table displaying the list of members.
+ *
+ * @param {Object} param0 - The props object.
+ * @param {Object} param0.facility - The facility object containing the list of subFacilities.
+ * @param {Object} param0.actions - The actions object for performing actions on the members.
+ * @returns {JSX.Element} a row contains facility's information.
  */
 
 export const FacilityMembersTable = ({facility, actions}) => {

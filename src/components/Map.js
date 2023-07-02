@@ -1,11 +1,16 @@
-
 import React, { useState } from 'react';
 import './Mapstyle.css';
 import { MapContainer, TileLayer, SVGOverlay } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import { SVGFillColorInput } from "./SVGFillInput"
 import { SVGOpacityInput } from "./SVGOpacityInput"
-
+/**
+ * Renders a map showing the facility's location with an SVG overlay.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @returns {JSX.Element} a map contains SVG overlays
+ */
 // Komponenta pro zobrazení mapy
 export const ShowMap = ({ facility }) => {
   // Načtení souřadnic jako řetězec a převod na pole

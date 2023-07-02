@@ -3,9 +3,12 @@ import { TextInput } from 'components/TextInput';
 import { FacilityMemberRemoveButton } from './FacilityMemberRemoveButton';
 
 /**
- * One facility as a table row
- * @param {*} param0 
- * @returns 
+ * Renders a table listing the facility members.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} tables contains facility information and delete button 
  */
 export const FacilityMemberTableRow = ({subFacility, actions, gid}) => {
     // Show only valid facilities 

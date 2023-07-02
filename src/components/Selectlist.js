@@ -1,5 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react'
-
+import React, { useState, useCallback } from 'react'
+/**
+ * Renders a select input component.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.id - The ID of the select input.
+ * @param {string} props.value - The current value of the select input.
+ * @param {Function} props.onChange - The function called when the select input value changes.
+ * @param {string} props.placeholder - The placeholder text for the select input.
+ * @returns {JSX.Element} selection of facility's type. 
+ */
 export const SelectInput = ({ id, value, onChange, placeholder }) => {
   const [localValue, setLocalValue] = useState(value)
 

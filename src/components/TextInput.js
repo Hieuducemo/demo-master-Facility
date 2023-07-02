@@ -1,14 +1,12 @@
 import { useState, useMemo, useCallback } from 'react'
-
 import { CreateDelayer } from 'utils/CreateDelayer'
-
 /**
  * Editable Text (input type="text")
- * @param {*} id mandatory identification, often related to id of entity 
- * @param {str} value value of input
- * @param {str} placeholder value of help if the text is not displayed
- * @param {(value) => void} onChange delayed callback notifying about the change
- * @returns 
+ * @param {string} id - Mandatory identification, often related to the id of an entity.
+ * @param {string} value - Value of the input.
+ * @param {string} placeholder - Value to display as a placeholder if the text is not displayed.
+ * @param {Function} onChange - Delayed callback notifying about the change.
+ * @returns {JSX.Element} - An input box.
  */
 export const TextInput = ({ id, value, onChange, placeholder }) => {
     // Initialize localValue state with the initial value

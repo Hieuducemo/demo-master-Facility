@@ -1,5 +1,12 @@
 import { TextInput } from './TextInput'
-
+/**
+ * Renders an input field for editing the facility name.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} a input box to define name of facility. 
+ */
 export const FacilityNameInput = ({ facility, actions }) => {
     // Define onchange function to update facility name
     const onchange = (value) => {

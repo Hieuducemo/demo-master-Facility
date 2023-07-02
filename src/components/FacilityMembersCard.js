@@ -5,6 +5,11 @@ import { FacilitySearch } from "./FacilitySearch";
 
 /**
  * Renders a card containing a list of Facility members.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} a card contains add button, subFacility information and facility name search.
  */
 export const FacilityMembersCard = ({facility, actions}) => {
     return (

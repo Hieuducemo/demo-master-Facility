@@ -1,6 +1,14 @@
 import { DeleteButton } from "./DeleteButton";
 import { BsFillHouseDashFill } from 'react-icons/bs';
-
+/**
+ * Facility Member Remove Button component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.subFacility - The subFacility object to be removed.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} delete button to remove facility from row, icon.
+ */
 export const FacilityMemberRemoveButton = ({ facility, subFacility, actions }) => {
     // Define onClick function to handle member removal
     const onClick = () => {

@@ -1,7 +1,8 @@
 /**
- * Vytvari zpozdovac,
- * @param {*} delay 
- * @returns 
+ * Creates a function delayer that introduces a delay before executing a given function.
+ *
+ * @param {number} delay - The delay in milliseconds. Default is 300 milliseconds.
+ * @returns {Function} The delayer function that accepts a function to be delayed.
  */
 export const CreateDelayer = (delay=300) => {
     //lokalni promenna

@@ -2,7 +2,14 @@ import { useState } from 'react';
 import { v1 } from 'uuid';
 import { AddButton } from './AddButton';
 import { BsHouseAddFill } from 'react-icons/bs';
-
+/**
+ * Facility Member Add Button component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} Input field for entering the facility's name, button for adding a new member.
+ */
 export const FacilityMemberAddButton = ({ facility, actions }) => {
   // Define state for the new member
   const [newMember, setNewMember] = useState({
@@ -30,7 +37,7 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
   });
 
   // Function to handle adding a new member
-  const handleAddMember = () => {
+  const handleAddFacility = () => {
     const FacilityId = facility.id
     // Create a new member object with a unique ID
     const member = {
@@ -58,7 +65,7 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
 
   return (
     <div>
-      {/* Input field for entering the member's name */}
+      {/* Input field for entering the facility's name */}
       <input className="inputBtn"
         type="text"
         name="name"
@@ -66,8 +73,8 @@ export const FacilityMemberAddButton = ({ facility, actions }) => {
         value={newMember.name}
         onChange={handleChange}
       />
-      {/* Button for adding a new member */}
-      <AddButton onClick={handleAddMember}>
+      {/* Button for adding a new facility */}
+      <AddButton onClick={handleAddFacility}>
         <BsHouseAddFill />
       </AddButton>
     </div>

@@ -5,7 +5,14 @@ import { FacilityTypeInput } from "./FacilityTypeInput"
 import { FacilityNameInput } from "./FacilityNameInput"
 import { FacilityGeometryInput } from "./FacilityGeometryInput";
 import {FacilityGeolocationInput} from "./FacilityGeolocationInput"
-
+/**
+ * Editable Facility Attributes component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} The facility editable attributes.
+ */
 export const FacilityAttributesEditable = ({facility, actions}) => {
     return (
         <Card className="mnk">

@@ -1,5 +1,12 @@
 import { SelectInput } from "./Selectlist"
-
+/**
+ * Renders a select input for selecting the facility type.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} a select list of facility's types. 
+ */
 export const FacilityTypeInput = ({ facility, actions }) => {
     // Define onchange function to update facility type
     const onchange = (value) => {

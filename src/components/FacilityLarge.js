@@ -9,8 +9,11 @@ import {ShowMap} from "./Map"
 
 /**
  * Renders a card describing a Facility in detailed form.
- * @param {*} param0 
- * @returns 
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.facility - The facility object.
+ * @param {Object} props.actions - The actions for modifying the facility.
+ * @returns {JSX.Element} a table contains input boxes, editable atribute table,card subfacility information, map for facility information. 
  */
 
 export const FacilityLarge = ({facility, actions}) => {

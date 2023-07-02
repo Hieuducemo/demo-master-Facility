@@ -1,9 +1,10 @@
 import { authorizedFetch } from 'queries/authorizedFetch'
 
 /**
- * Funkce, ktera id namapuje na json predstavujici "velky" (podrobny) dotaz na server
- * @param {*} id 
- * @returns 
+ * Maps the ID to a JSON object representing the "large" (detailed) query to the server.
+ *
+ * @param {string} id - The ID of the facility.
+ * @returns {Object} The JSON object representing the facility query.
  */
 export const FacilityQueryLargeJSON = (id) => ({
     "query":
@@ -41,8 +42,10 @@ export const FacilityQueryLargeJSON = (id) => ({
 })
 
 /**
- * Realizace dotazu na server. Vyuziva autorizedFetch (zapouzdreni)
- * @returns 
+ * Executes the query to the server using authorizedFetch (wrapper function).
+ *
+ * @param {string} id - The ID of the facility.
+ * @returns {Promise<Response>} A promise representing the response to the fetch request.
  */
 export const FacilityQueryLarge = (id) =>
     authorizedFetch('/gql', {

@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {  UpdateItem } from './keyedreducers';
+import { UpdateItem } from './keyedreducers';
 
 /**
- * stavova funkce, ktera pridat nemovitost ze skupiny 
- * @param {*} state 
- * @param {*} action 
- * @returns 
+ * Reducer function that adds a facility member to a group.
+ *
+ * @param {Object} state - The current state.
+ * @param {Object} action - The action object.
+ * @param {string} action.payload.FacilityId - The ID of the facility group.
+ * @param {Object} action.payload.member - The facility member to add.
+ * @returns {Object} The new state with the added facility member.
  */
 const FacilityMemberAdd = (state, action) => {
   const g = action.payload.FacilityId
@@ -16,10 +19,13 @@ const FacilityMemberAdd = (state, action) => {
 }
 
 /**
- * stavova funkce, ktera odebere nemovitost ze skupiny 
- * @param {*} state 
- * @param {*} action 
- * @returns 
+ * Reducer function that removes a facility member from a group.
+ *
+ * @param {Object} state - The current state.
+ * @param {Object} action - The action object.
+ * @param {Object} action.payload.facility - The facility containing the member to remove.
+ * @param {Object} action.payload.subFacility - The facility member to remove.
+ * @returns {Object} The new state with the removed facility member.
  */
 const FacilityMemberRemove = (state, action) => {
     const g = action.payload.facility

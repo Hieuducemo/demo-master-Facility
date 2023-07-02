@@ -69,8 +69,6 @@ export const FacilitySearch = ({onSelect}) => {
     const [ facilityRecords, setFacilityRecords ] =  useState([])
     const [ currentLetters, setCurrentLetters ] =  useState('')
 
-    
-
     useEffect(() =>{
         if (currentLetters.length > 2) {
             FacilitysBy3LettersQuery(currentLetters).then(

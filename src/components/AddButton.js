@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react';
 
 /**
- * This is Add Button with confirmation (two state button).
- * @param {*} children
- * @param {() => void} onClick
- * @returns 
+ * This is an Add Button with confirmation (two-state button).
+ *
+ * @param {*} children - The content of the button.
+ * @param {Function} onClick - The click event handler for the button.
+ * @returns {JSX.Element} The state of the button.
  */
 export const AddButton = ({children, onClick}) => {
 

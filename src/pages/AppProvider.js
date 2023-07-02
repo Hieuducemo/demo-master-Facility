@@ -3,9 +3,8 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { bindFacilityActions } from 'reducers/_main';
 import { FacilityReducer } from 'reducers/Facilityreducers'; 
-
 /**
- * Toto je hlavni store pro celou aplikaci. Zde zacleneno pro demonstraci. 
+ * The Redux store for the application.
  */
 export const store = configureStore(
     { 
@@ -20,17 +19,19 @@ export const store = configureStore(
 const dispatch = store.dispatch
 
 /**
- * Vsechny akce / callbacky pro celou aplikaci
- * Lze je kdekoliv importovat a vyuzit. 
- * Je ovsem zadouci, aby se tyto dostaly ke "spodnim" komponentam pres props.
- * Tim se zabezpeci jejich "purity" (nejsou zavisle na globalnich parametrech)
+ * All the actions/callbacks for the application.
+ * They can be imported and used anywhere.
  */
 export const actions = {
     ...bindFacilityActions(dispatch)
 }
 
 /**
- * Zapouzdruje vnorene komponenty a umoznuje jim vyuzivat store - centralni data
+ * Wraps the nested components and provides the Redux store.
+ *
+ * @param {Object} props - The component props.
+ * @param {React.ReactNode} props.children - The nested components.
+ * @returns {JSX.Element} facility store provided by AppProvider. 
  */
 export const AppProvider = ({children}) => {
     return (
