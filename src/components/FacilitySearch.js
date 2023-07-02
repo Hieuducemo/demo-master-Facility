@@ -7,97 +7,109 @@ import { useEffect, useState } from "react";
 import { authorizedFetch } from "queries/authorizedFetch";
 import { Search, XLg } from "react-bootstrap-icons";
 
+// JSON object for the facility query
 export const FacilitysBy3LettersQueryJSON = (letters) => ({
-    "query":
-        `query($letters: String!) {
-            result: facilityByLetters(letters: $letters) {
-                id
-                name
-            }
-        }`,
-    "variables": {"letters": letters}
-})
+  "query": `query($letters: String!) {
+    result: facilityByLetters(letters: $letters) {
+      id
+      name
+    }
+  }`,
+  "variables": { "letters": letters }
+});
 
+// Function to execute the facility query
 export const FacilitysBy3LettersQuery = (letters) =>
-    authorizedFetch('/gql', {
-        body: JSON.stringify(FacilitysBy3LettersQueryJSON(letters)),
-    })
+  authorizedFetch('/gql', {
+    body: JSON.stringify(FacilitysBy3LettersQueryJSON(letters)),
+  });
 
-
-const FacilitySugestion = ({facility, onSelect}) => {
-    
-    const _onSelect = () => {
-        if (onSelect) {
-          onSelect(facility);
-          setSelectedSuggestion(facility);
-        }
-      };
-      
-    return (
-        <Col key={facility.id}>
-        <span style={{ cursor: "pointer" }} onClick={_onSelect}>
-          {facility.name}
-        </span>
-      </Col>
-    )
-}
-
-const Suggestions = ({facilityRecords, Suggestion, onSelect}) => {
-    if ((facilityRecords.length === 0)) {
-        return null
+// Component for displaying a facility suggestion
+const FacilitySugestion = ({ facility, onSelect }) => {
+  const _onSelect = () => {
+    if (onSelect) {
+      onSelect(facility);
+      setSelectedSuggestion(facility);
     }
+  };
 
-    return (
-        <div style={{position: "relative"}}>
-            <div style={{position: "absolute", top: "0px", zIndex: "10", width: "100%"}}>
-                <Card>
-                    <Card.Body>
-                        <Row>
-                            {facilityRecords.map( 
-                                item => 
-                                    <Suggestion key={item.id} onSelect={onSelect} facility={item}/>                               
-                            )}
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </div>
-        </div>
-    )
-}
+  return (
+    <Col key={facility.id}>
+      <span style={{ cursor: "pointer" }} onClick={_onSelect}>
+        {facility.name}
+      </span>
+    </Col>
+  );
+};
 
-export const FacilitySearch = ({onSelect}) => {
-    const [ facilityRecords, setFacilityRecords ] =  useState([])
-    const [ currentLetters, setCurrentLetters ] =  useState('')
+// Component for displaying the suggestions
+const Suggestions = ({ facilityRecords, Suggestion, onSelect }) => {
+  if (facilityRecords.length === 0) {
+    return null;
+  }
 
-    useEffect(() =>{
-        if (currentLetters.length > 2) {
-            FacilitysBy3LettersQuery(currentLetters).then(
-                response => response.json()
-            )
-            
-            .then(json => json.data)
-            .then(hints => {
-                if (hints) {
-                    setFacilityRecords(() => hints.result)
-                }
-            })
-        }
-    }, [currentLetters])
+  return (
+    <div style={{ position: "relative" }}>
+      <div style={{ position: "absolute", top: "0px", zIndex: "10", width: "100%" }}>
+        <Card>
+          <Card.Body>
+            <Row>
+              {facilityRecords.map(item => (
+                <Suggestion key={item.id} onSelect={onSelect} facility={item} />
+              ))}
+            </Row>
+          </Card.Body>
+        </Card>
+      </div>
+    </div>
+  );
+};
 
-    const [inputValue, setInputValue] = useState('')
-    const onChange = (e) => {
-        const newValue = e.target.value
+// Component for the facility search
+export const FacilitySearch = ({ onSelect }) => {
+  const [facilityRecords, setFacilityRecords] = useState([]);
+  const [currentLetters, setCurrentLetters] = useState('');
 
-        setCurrentLetters(newValue)
-        if (newValue.length < 3) {
-            setFacilityRecords([])
-        }
-        setInputValue(newValue)
+  useEffect(() => {
+    // Fetch facility records when the length of currentLetters is greater than 2
+    if (currentLetters.length > 2) {
+      FacilitysBy3LettersQuery(currentLetters)
+        .then(response => response.json())
+        .then(json => json.data)
+        .then(hints => {
+          if (hints) {
+            setFacilityRecords(hints.result);
+          }
+        });
     }
-    const closeSearch = () => {
-        setInputValue("");
-        setFacilityRecords([]); 
+  }, [currentLetters]);
+
+  const [inputValue, setInputValue] = useState('');
+
+  const onChange = (e) => {
+    // Get the new value from the input field
+    const newValue = e.target.value;
+  
+    // Update the current letters state
+    setCurrentLetters(newValue);
+  
+    // Clear the facility records if the new value has fewer than 3 characters
+    if (newValue.length < 3) {
+      setFacilityRecords([]);
     }
+  
+    // Set the input value
+    setInputValue(newValue);
+  };
+  
+
+  const closeSearch = () => {
+    // Reset the search input value
+    setInputValue("");
+    // Clear the facility records
+    setFacilityRecords([]);
+  };
+  
     return (
         <div style={{position: "relative"}}>
             <div className="input-group mb-3">
