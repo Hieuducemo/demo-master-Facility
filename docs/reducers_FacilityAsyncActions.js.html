@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: reducers/FacilityAsyncActions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: reducers/FacilityAsyncActions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { FacilityActions } from "./Facilityreducers" 
+import { FacilityQueryLarge } from "queries/FacilityQueryLarge"
+
+import { authorizedFetch } from "queries/authorizedFetch"
+/**
+ * Helper function to fetch facility data from the server and update the state.
+ *
+ * @param {string} id - The ID of the facility to fetch.
+ * @param {Function} query - The query function to retrieve facility data.
+ * @param {Function} resultselector - The function to extract the relevant data from the response.
+ * @param {Function} dispatch - The dispatch function from Redux.
+ * @param {Function} getState - The function to retrieve the current state from Redux.
+ * @returns {Promise} A promise representing the fetch operation.
+ */
+// Pomocná funkce pro získání dat o zařízení ze serveru a aktualizaci stavu
+export const FacilityFetchHelper = (id, query, resultselector, dispatch, getState) => {
+    const log = (text) => (p) => {
+        console.log(text)
+        console.log(JSON.stringify(p))
+        return p
+    }
+
+    const p = query(id)
+        .then(
+            response => response.json(),
+            error => error
+        )
+        .then(
+            j => log('incomming')(j)
+        )
+        .then(
+            json => log('converted')(resultselector(json)),
+            error => error
+        )
+        .then(
+            json => log('dispatching')(dispatch(FacilityActions.Facility_update(json))),
+            error => error
+        )
+
+    return p
+}
+
+/**
+ * Fetches facility data from the server, verifies its type, and loads detailed data. Finally, it saves the result to the state.
+ *
+ * @param {string} id - The ID of the facility to fetch.
+ * @returns {Promise} A promise representing the fetch operation.
+ */
+export const FacilityFetch = (id) => (dispatch, getState) => {
+    const FacilitySelector = (json) => json.data.facilityById
+    const bodyfunc = async () => {
+        let facilityData = await FacilityFetchHelper(id, FacilityQueryLarge, FacilitySelector, dispatch, getState)
+        
+        if (facilityData.type !== "764217ee-a7a0-11ed-b76e-0242ac110002") {
+            facilityData = await FacilityFetchHelper(id, FacilityQueryLarge, FacilitySelector, dispatch, getState)
+        }
+        return facilityData
+    }
+    return bodyfunc()
+}
+
+/**
+ * Inserts a new facility into the system.
+ *
+ * @param {Object} member - The facility data to insert.
+ * @returns {Promise} A promise representing the insert operation.
+ */
+export const FacilityAsyncInsert = (member)=>(dispatch,getState)=>{
+    const FacilityMutationJSON =(member)=>{
+        return{
+            query: `mutation ($name:String!,
+                  $facilitytypeId:ID!,
+                  $id:ID!,
+                  $masterFacilityId:ID!
+                  ){
+                    facilityInsert(facility:{
+                        name:$name,
+                        facilitytypeId:$facilitytypeId, 
+                        id:$id, 
+                        masterFacilityId:$masterFacilityId,       
+                    })
+                    {
+                        msg            
+                    }
+                  }
+            `, 
+            variables: member
+        }
+    }
+    const params = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        redirect: 'follow', // manual, *follow, error
+        body: JSON.stringify(FacilityMutationJSON(member))
+    }
+    return fetch('/api/gql', params)
+}
+
+
+/**
+ * Generates the JSON query for updating facility data.
+ *
+ * @param {Object} facility - The facility data to update.
+ * @returns {Object} The update query JSON.
+ */
+const FacilityUpdateQueryJSON = (facility) => {
+    return {
+        query: `mutation(
+            $id: ID!
+          $lastchange: DateTime!
+          $name: String
+          $facilitytype_id: ID
+          $nameEn: String
+          $label: String
+          $address: String
+          $valid: Boolean
+          $capacity: Int
+          $geometry: String
+          $geolocation: String
+          $master_facility_id: ID
+          ) {
+        result: facilityUpdate(facility: {
+              id: $id
+          lastchange: $lastchange
+          name: $name
+          facilitytypeId: $facilitytype_id
+          nameEn: $nameEn
+          label: $label
+          address: $address
+          valid: $valid
+          capacity: $capacity
+          geometry: $geometry
+          geolocation: $geolocation
+          masterFacilityId: $master_facility_id
+        }) {
+          id
+          msg
+          facility {
+            id
+            lastchange
+            name
+            type { id name }
+            nameEn
+            label
+            address
+            valid
+            capacity
+            geometry
+            geolocation
+            masterFacility { id name }
+          }
+        }
+      }`,
+        variables: {
+            ...facility, 
+            master_facility_id: facility?.master_facility_id,
+            facilitytype_id: facility?.facilitytype_id
+        }
+        }
+    }
+
+/**
+ * Updates facility data by sending an asynchronous request to the server.
+ *
+ * @param {Object} facility - The facility data to update.
+ * @returns {Promise&lt;Response>} A Promise that resolves to the server response.
+ */
+export const FacilityUpdateQuery = (facility) =>
+    authorizedFetch('', {
+        body: JSON.stringify(FacilityUpdateQueryJSON(facility))
+    })
+
+/**
+ * Asynchronous action for updating facility data.
+ *
+ * @param {Object} facility - The facility data to update.
+ * @returns {Promise} A Promise that resolves to the server response.
+ */
+export const FacilityUpdateAsyncAction = (facility) => (dispatch, getState) => {
+    return FacilityUpdateQuery(facility)
+        .then(
+            resp => resp.json()
+        )
+        .then(
+            json => {
+                const newFacility = json?.data?.result?.facility
+                if (newFacility) {
+                    dispatch(FacilityActions.Facility_update({...newFacility}))
+                }
+                return json
+            }
+        )   
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddButton">AddButton</a></li><li><a href="global.html#AppProvider">AppProvider</a></li><li><a href="global.html#CreateDelayer">CreateDelayer</a></li><li><a href="global.html#DeleteButton">DeleteButton</a></li><li><a href="global.html#FacilityAsyncInsert">FacilityAsyncInsert</a></li><li><a href="global.html#FacilityAttributesEditable">FacilityAttributesEditable</a></li><li><a href="global.html#FacilityFetch">FacilityFetch</a></li><li><a href="global.html#FacilityFetchHelper">FacilityFetchHelper</a></li><li><a href="global.html#FacilityGeolocationInput">FacilityGeolocationInput</a></li><li><a href="global.html#FacilityGeometryInput">FacilityGeometryInput</a></li><li><a href="global.html#FacilityLarge">FacilityLarge</a></li><li><a href="global.html#FacilityMemberAdd">FacilityMemberAdd</a></li><li><a href="global.html#FacilityMemberAddButton">FacilityMemberAddButton</a></li><li><a href="global.html#FacilityMemberRemove">FacilityMemberRemove</a></li><li><a href="global.html#FacilityMemberRemoveButton">FacilityMemberRemoveButton</a></li><li><a href="global.html#FacilityMemberTableRow">FacilityMemberTableRow</a></li><li><a href="global.html#FacilityMembersCard">FacilityMembersCard</a></li><li><a href="global.html#FacilityMembersTable">FacilityMembersTable</a></li><li><a href="global.html#FacilityNameInput">FacilityNameInput</a></li><li><a href="global.html#FacilityPageProvider">FacilityPageProvider</a></li><li><a href="global.html#FacilityQueryLarge">FacilityQueryLarge</a></li><li><a href="global.html#FacilityQueryLargeJSON">FacilityQueryLargeJSON</a></li><li><a href="global.html#FacilitySlice">FacilitySlice</a></li><li><a href="global.html#FacilityTypeInput">FacilityTypeInput</a></li><li><a href="global.html#FacilityUpdateAsyncAction">FacilityUpdateAsyncAction</a></li><li><a href="global.html#FacilityUpdateQuery">FacilityUpdateQuery</a></li><li><a href="global.html#FacilityUpdateQueryJSON">FacilityUpdateQueryJSON</a></li><li><a href="global.html#SVGFillColorInput">SVGFillColorInput</a></li><li><a href="global.html#SVGOpacityInput">SVGOpacityInput</a></li><li><a href="global.html#SelectInput">SelectInput</a></li><li><a href="global.html#ShowMap">ShowMap</a></li><li><a href="global.html#TextInput">TextInput</a></li><li><a href="global.html#UpdateItem">UpdateItem</a></li><li><a href="global.html#actions">actions</a></li><li><a href="global.html#authorizedFetch">authorizedFetch</a></li><li><a href="global.html#store">store</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jul 01 2023 22:55:26 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
