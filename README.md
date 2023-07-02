@@ -48,6 +48,6 @@ Finishing alpha verze!
 Project day(Success)
 ### 3. 7. 2023 begining of exam 
 #### Future development 
-CSS style 
+CSS style and
 Search bar for map indication
 
