@@ -47,7 +47,7 @@ export const ShowMap = ({ facility }) => {
       </svg>
     </SVGOverlay>
   );
-
+  
   // Vykreslení komponenty pro zobrazení mapy
   return (
     <div>
